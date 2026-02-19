@@ -8,8 +8,8 @@
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-	<link href="{{ Storage::url('dashboard_assets/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ Storage::url('dashboard_assets/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('dashboard_assets/global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('dashboard_assets/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,12 +24,12 @@
 
 
 	<!-- Core JS files -->
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/main/jquery.min.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/main/jquery.min.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="{{ Storage::url('dashboard_assets/assets/js/app.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/assets/js/app.js') }}"></script>
 	<!-- /theme JS files -->
 
 </head>
