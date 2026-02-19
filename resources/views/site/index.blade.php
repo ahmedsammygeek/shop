@@ -94,12 +94,12 @@
                             </div>
                         </div>
                         <div class="item-text">
-                            <h4 class='text-center' > {{ $product->name }} </h4>
-                            <li>
+                            <h6 class='text-center' > {{ $product->name }} </h6>
+                          
                                 <div class="list-right">
                                     <h4 class='text-center' style='color:#0B2D72 !important' >{{ $product->price }} ج.م </h4>
                                 </div>
-                            </li>
+                            
                             <div class="item-footer">
                                 <a href='{{ route('site.products.show' , $product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
                             </div>
@@ -150,14 +150,14 @@
                             </div>
                         </div>
                         <div class="item-text">
-                            <h4 class="text-center"> {{ $product->name }} </h4>
-                            <li>
+                            <h6 class="text-center"> {{ $product->name }} </h6>
+                         
                                 <div class="list-right">
                                    
                                     <h6 class="text-center" style="color:#0B2D72 !important" >{{ $product->price }} م.ج</h6>
                                 </div>
                      
-                            </li>
+                        
                             <div class="item-footer">
                                 <a href='{{ route('site.products.show' , $product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
                             </div>
@@ -211,13 +211,12 @@
                         </div>
                         <div class="item-text">
                             <h4 class='text-center' > {{ $category_product->name }} </h4>
-                            <li>
+                           
                                 <div class="list-right">
-                                 
                                     <h6 class='text-center' style='color:#0B2D72 !important' >{{ $category_product->price }} م.ج</h6>
                                 </div>
                           
-                            </li>
+                     
                             <div class="item-footer">
                                 <a href='{{ route('site.products.show' , $category_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
                             </div>
