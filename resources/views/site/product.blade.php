@@ -25,7 +25,7 @@
       <main class="col-md-6">
         <article class="product-info-aside">
 
-          <h2 class="title mt-3" style='color: #6B14BE' > {{ $product->name }} </h2>
+          <h2 class="title mt-3" style='color: #0B2D72' > {{ $product->name }} </h2>
 
           <div class="rating-wrap my-3">
            <ul class="rating-stars">
@@ -143,17 +143,13 @@
             </div>
           </div>
           <div class="item-text">
-            <h4 class='text-center' > {{ $best_selling_product->name }} </h4>
-            <li>
-              <div class="list-right">
-                <span>أقل سعر للبيع</span>
-                <h4 class='text-center' style='color:#6B14BE !important' >{{ $best_selling_product->price }} ج.م </h4>
-              </div>
+            <h6 class='text-center' > {{ $best_selling_product->name }} </h6>
+          
+
               <div class="list-left">
-                <span>أقل ربح لك</span>
-                <h4 class='text-center' style='font-size: 23px !important;color:#6B14BE !important;'> {{ $best_selling_product->marketer_price }} ج.م</h4>
+                <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> {{ $best_selling_product->price }} ج.م</h6>
               </div>
-            </li>
+         
             <div class="item-footer">
               <a href='{{ route('site.products.show' , $best_selling_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
             </div>
