@@ -43,22 +43,20 @@
         </div> 
     </div> 
 </section>
-<section class="products" dir='ltr' >
+{{-- <section class="products" dir='rtl' >
     <div class="container">
         <div class="owl-carousel">
             @foreach ($slider_categories as $slider_category)
-            <div class="pro-box">
+            <div class="pro-box col-md-2">
                 <a href="{{ route('category.products' , $slider_category ) }}">
-                    <img class="img-circle" src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="{{ $slider_category->name }}">
+                    <img width="100" height="100" src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="{{ $slider_category->name }}">
                 </a>
             </div>
             @endforeach
-
-
         </div>  
     </div>
 </section>
-
+ --}}
 
 <div class="container">
     <!-- =============== SECTION 1 =============== -->
@@ -99,7 +97,6 @@
                             <h4 class='text-center' > {{ $product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                    <span>سعر المنتج</span>
                                     <h4 class='text-center' style='color:#0B2D72 !important' >{{ $product->price }} ج.م </h4>
                                 </div>
                             </li>
@@ -156,7 +153,7 @@
                             <h4 class="text-center"> {{ $product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                     <span>سعر المنتج</span>
+                                   
                                     <h6 class="text-center" style="color:#0B2D72 !important" >{{ $product->price }} م.ج</h6>
                                 </div>
                      
@@ -216,7 +213,7 @@
                             <h4 class='text-center' > {{ $category_product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                     <span>سعر المنتج</span>
+                                 
                                     <h6 class='text-center' style='color:#0B2D72 !important' >{{ $category_product->price }} م.ج</h6>
                                 </div>
                           
