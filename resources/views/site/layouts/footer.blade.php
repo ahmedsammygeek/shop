@@ -7,9 +7,9 @@
                         <h5 class="title"> @lang('site.contanct_us')</h5>
                         <p> @lang('site.Contact Us For Any Questions') </p>
                         <ul class="list-unstyled">
-                            <li>   <i class="icon fa fa-map-marker"> </i> <span>  {{ $data['settings']->address }} </span>    </li>
-                            <li>   <i class="icon fa fa-envelope"> </i> {{ $data['settings']->email }}   </li>
-                            <li>    <i class="icon fa fa-phone"> </i>  {{ $data['settings']->phone }} </li>
+                            <li> <i class="icon fa fa-map-marker"> </i> <span>  {{ $data['settings']->address }} </span>    </li>
+                            <li> <i class="icon fa fa-envelope"> </i> {{ $data['settings']->email }}   </li>
+                            <li> <i class="icon fa fa-phone"> </i>  {{ $data['settings']->phone }} </li>
                         </ul>
                     </article>
                 </aside>

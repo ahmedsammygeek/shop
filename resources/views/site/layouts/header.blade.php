@@ -11,18 +11,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTop4">
             <ul class="navbar-nav mr-auto">
-                {{-- <li><a href="#" class="nav-link"> المساعده </a></li> --}}
-                {{-- <li><a href="#" class="nav-link"> المساعده </a></li> --}}
+                <li><a href="#" class="nav-link"> المساعده </a></li>
+                <li><a href="#" class="nav-link"> المساعده </a></li>
             </ul>
             <ul class="navbar-nav">
                 <li>
                     الشحن الى مصر
 
-{{--                     @foreach ($data['countries'] as $country)
+                    @foreach ($data['countries'] as $country)
                         <a href="#" class="nav-link"> 
                             <img src="{{ Storage::url('countries/'.$country->image) }}" height="16"> {{ $country->name }}   الشحن الى 
                         </a>
-                        @endforeach --}}
+                        @endforeach
                     </li>
                 </ul> <!-- list-inline //  -->
             </div> <!-- navbar-collapse .// -->
@@ -34,7 +34,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-3 col-md-12">
                     <a href="{{ url('/') }}" class="brand-wrap">
-                        <img style='max-height: 57px; !important' class="logo" src="{{ Storage::url('site_assets/images/souq-01-final.svg') }}">
+                        <img style='max-height: 57px; !important' class="logo" src="{{ asset('sho_logo.png') }}">
                     </a> 
                 </div>
                 <div class="col-xl-6 col-lg-5 col-md-6">

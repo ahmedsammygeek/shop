@@ -11,9 +11,9 @@ $lang = LaravelLocalization::getCurrentLocale();
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-	<link href="{{ Storage::url('dashboard_assets/global_assets/css/icons/icomoon/styles.min.css'); }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('dashboard_assets/global_assets/css/icons/icomoon/styles.min.css'); }}" rel="stylesheet" type="text/css">
 
-	<link href="{{ Storage::url('dashboard_assets/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('dashboard_assets/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"> 
@@ -29,16 +29,16 @@ $lang = LaravelLocalization::getCurrentLocale();
 
 	<!-- /global stylesheets -->
 	<!-- Core JS files -->
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/main/jquery.min.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/main/jquery.min.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
 	<!-- /core JS files -->
 
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/assets/js/app.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/demo_pages/dashboard.js') }}"></script>
-	<script src="{{ Storage::url('dashboard_assets/global_assets/js/demo_pages/content_cards_header.js') }}"></script>
-	   <script src="{{ Storage::url('site_assets/js/sweetalert2.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/assets/js/app.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/demo_pages/dashboard.js') }}"></script>
+	<script src="{{ asset('dashboard_assets/global_assets/js/demo_pages/content_cards_header.js') }}"></script>
+	   <script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
 	@livewireScripts
 	@yield('scripts')
 	<!-- /theme JS files -->
