@@ -100,6 +100,7 @@ if ($lang == 'ar') {
    <script src="{{ asset('site_assets/js/all.min.js') }}"></script>
    <script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
    <script src="{{ asset('site_assets/js/slick.min.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    @yield('scripts')
    @stack('scripts')

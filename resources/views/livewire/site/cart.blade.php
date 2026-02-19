@@ -50,10 +50,6 @@
           <dd class="text-right">{{ $this->total }} <span class='text-muted'> جنيه</span> </dd>
         </dl>
 
-        <dl class="dlist-align">
-          <dt style="width:143px !important;" >صافى الربح </dt>
-          <dd class="text-right">{{ $this->marketer_bounse }} <span class='text-muted'> جنيه</span> </dd>
-        </dl>
 
         <dl class="dlist-align">
           <dt style="width:143px !important;" >الشحن:</dt>
