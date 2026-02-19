@@ -49,7 +49,7 @@
             @foreach ($slider_categories as $slider_category)
             <div class="pro-box">
                 <a href="{{ route('category.products' , $slider_category ) }}">
-                    <img src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="{{ $slider_category->name }}">
+                    <img class="img-circle" src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="{{ $slider_category->name }}">
                 </a>
             </div>
             @endforeach
