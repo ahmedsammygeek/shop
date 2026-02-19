@@ -35,35 +35,7 @@
 						<div class="tab-pane fade show active" id="solid-justified-tab1">
 							<fieldset class="mb-3">
 								<div class="form-group row">
-
-
-									<div class="col-md-3">
-										<div  class='mb-2' >
-											<label class="col-form-label"> الدوله </label>
-											<select class='form-control' name="country_id" id="">
-												@foreach ($countries as $country)
-												<option value="{{ $country->id }}"> {{ $country->name }} </option>
-												@endforeach
-											</select>
-											@error('image')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label"> الحد الادنى للتنبيه عند الوصول </label>
-											<input type="text" value='0' name="minimam_stock_alert" class="form-control @error('minimam_stock_alert') is-invalid @enderror " >
-											@error('minimam_stock_alert')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-
-
-
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.image') </label>
 											<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
@@ -72,7 +44,7 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.images') </label>
 											<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
@@ -81,8 +53,6 @@
 											@enderror
 										</div>
 									</div>
-
-
 									<div class="col-md-6">
 										<div  class='mb-2' >
 											<label class="col-form-label"> اسم المنتج بالعربيه </label>
@@ -101,9 +71,7 @@
 											@enderror
 										</div>
 									</div>
-									
-
-									<div class="col-md-3">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.category') </label>
 											<select name="category_id" id="select1" class="form-control ">
@@ -117,10 +85,7 @@
 											@enderror
 										</div>
 									</div>
-									
-
-
-									<div class="col-md-3">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.brand') </label>
 											<select name="brand_id" id="select5" class="form-control " >
@@ -135,7 +100,7 @@
 										</div>
 									</div>
 
-									<div class="col-md-2">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> البارد كود </label>
 											<input type="text" name="barcode" class="form-control @error('barcode') is-invalid @enderror " >
@@ -144,26 +109,8 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label"> عدد النقاط </label>
-											<input type="text" name="points" class="form-control @error('points') is-invalid @enderror " >
-											@error('points')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label"> الحد الادنى للبيع بالجمله </label>
-											<input type="text" name="minimam_gomla_number" class="form-control @error('minimam_gomla_number') is-invalid @enderror " >
-											@error('minimam_gomla_number')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-
-
+	
+		
 
 
 									<div class="col-md-6">
@@ -206,7 +153,7 @@
 										</div>
 									</div>
 
-									<div class="col-md-2">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> سعر المنتج </label>
 											<input type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" >
@@ -215,7 +162,7 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> السعر بعد الخصم </label>
 											<input type="text" class="form-control @error('price_after_discount') is-invalid @enderror" name="price_after_discount" value="{{ old('price_after_discount') }}" >
@@ -224,7 +171,7 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> نسبه الخصم </label>
 											<input type="text" class="form-control @error('discount_percentage') is-invalid @enderror" name="discount_percentage" value="{{ old('discount_percentage') }}" >
@@ -233,37 +180,6 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label"> مبلغ المسوق </label>
-											<input type="text" class="form-control @error('marketer_price') is-invalid @enderror" name="marketer_price" value="{{ old('marketer_price') }}" >
-											@error('marketer_price')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label"> المبلغ الموصى بيه للبيع (الادنى) </label>
-											<input type="number" class="form-control @error('min_price') is-invalid @enderror" name="min_price" value="{{ old('min_price') }}" >
-											@error('min_price')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div  class='mb-2' >
-											<label class="col-form-label">  المبلغ الموصى بيه للبيع (الاعلى) </label>
-											<input type="number" class="form-control @error('max_price') is-invalid @enderror" name="max_price" value="{{ old('max_price') }}" >
-											@error('max_price')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-
-
-
-
 								</div>			
 							</fieldset>
 						</div>

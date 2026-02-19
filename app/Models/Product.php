@@ -50,17 +50,11 @@ class Product extends Model
         $this->setTranslation('description' , 'en' , $data['description']['en']);
         $this->category_id = $data['category_id'];
         $this->brand_id = $data['brand_id'];
-        $this->marketer_price = $data['marketer_price'];
         $this->price = $data['price'];
         $this->price_after_discount = $data['price_after_discount'];
         $this->discount_percentage = $data['discount_percentage'];
         $this->barcode = $data['barcode'];
-        $this->points = $data['points'];
-        $this->minimam_gomla_number = $data['minimam_gomla_number'];
-        $this->minimam_stock_alert = $data['minimam_stock_alert'];
-        $this->country_id = $data['country_id'];
-        $this->min_price = $data['min_price'];
-        $this->max_price = $data['max_price'];
+
         $this->user_id = Auth::id();
         return $this->save();
     }
@@ -75,29 +69,18 @@ class Product extends Model
         $this->setTranslation('description' , 'en' , $data['description']['en']);
         $this->category_id = $data['category_id'];
         $this->brand_id = $data['brand_id'];
-        $this->marketer_price = $data['marketer_price'];
         $this->price = $data['price'];
         $this->price_after_discount = $data['price_after_discount'];
         $this->discount_percentage = $data['discount_percentage'];
         $this->active = isset($data['active']) ? 1 : 0;
         $this->barcode = $data['barcode'];
-        $this->points = $data['points'];
-        $this->minimam_gomla_number = $data['minimam_gomla_number'];
-        $this->minimam_stock_alert = $data['minimam_stock_alert'];
-        $this->country_id = $data['country_id'];
-        $this->min_price = $data['min_price'];
-        $this->max_price = $data['max_price'];
+
         return $this->save();
     }
 
     public function url()
     {
         return url('products/'.$this->id.'-'.$this->name);
-    }
-
-    public function warehouses()
-    {
-        return $this->hasMany(WarehouseProduct::class);
     }
 
     public function country()

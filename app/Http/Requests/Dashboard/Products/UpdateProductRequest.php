@@ -34,20 +34,13 @@ class UpdateProductRequest extends FormRequest
             'description.ar' => 'nullable' , 
             'min_description.en' => 'nullable' , 
             'min_description.ar' => 'nullable' , 
-            'image' => 'nullable|image' , 
+            'image' => 'nullable|mimes:jpeg,png,gif,avif' , 
             'images' => 'nullable'  , 
-            'images.*' => 'image' ,  
+            'images.*' => 'required|mimes:jpeg,png,gif,avif' ,  
             'active' => 'nullable' , 
-            'marketer_price' => 'required' , 
             'price' => 'required' , 
             'price_after_discount' => 'nullable' , 
             'discount_percentage' => 'nullable' , 
-            'points' => 'nullable' , 
-            'minimam_gomla_number' => 'nullable' , 
-            'minimam_stock_alert' => 'required' , 
-            'country_id' => 'required' , 
-            'min_price' => 'required' , 
-            'max_price' => 'required' , 
         ];
     }
 }
