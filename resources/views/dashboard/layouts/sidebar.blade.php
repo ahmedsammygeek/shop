@@ -131,16 +131,7 @@
 						<span class="badge badge-primary align-self-center ml-auto"> {{ $data['unrd_mssages_count'] }} </span>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a href="{{ route('dashboard.complains.index') }}" class="nav-link {{ $complains }}">
-						<i class="icon-envelop4 "></i>
-						<span>  الشكاوى و الاقتراحات </span>
-						<span class="badge badge-primary align-self-center ml-auto"> {{ $data['unrd_complains_count'] }} </span>
-					</a>
-				</li>
 
-
-				<!-- /main -->
 
 
 				<li class="nav-item nav-item-submenu ">
@@ -150,13 +141,7 @@
 						<li class="nav-item"><a href="{{ route('dashboard.admins.create') }}" class="nav-link">@lang('admins.add_new_admin')</a></li>
 					</ul>
 				</li>
-				<li class="nav-item nav-item-submenu ">
-					<a href="#" class="nav-link {{ $marketers }}"><i class="icon-users"></i> <span> المسوقين </span></a>
-					<ul class="nav nav-group-sub" >
-						<li class="nav-item"><a href="{{ route('dashboard.marketers.index') }}" class="nav-link"> عرض كافه المسوقين </a></li>
-						<li class="nav-item"><a href="{{ route('dashboard.marketers.create') }}" class="nav-link"> إضافه مسوق جديد </a></li>
-					</ul>
-				</li>
+
 
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ $categories }}"><i class="icon-equalizer "></i> <span> @lang('categories.categories') </span></a>
@@ -240,14 +225,7 @@
 						<li class="nav-item"><a href="{{ route('dashboard.cities.create') }}" class="nav-link"> إنشاء مدينه جديده</a></li>
 					</ul>
 				</li>	
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ $warehouses }}"><i class="icon-images3"></i> <span> المستودعات </span></a>
-					<ul class="nav nav-group-sub" >
-						<li class="nav-item"><a href="{{ route('dashboard.warehouses.index') }}" class="nav-link"> عرض كافه المستودعات</a></li>
-						<li class="nav-item"><a href="{{ route('dashboard.warehouses.create') }}" class="nav-link"> إنشاء المستودع جديده</a></li>
-					</ul>
-				</li>		
-	
+
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ $expenses }}"><i class="icon-images3"></i> <span> المصروفات </span></a>
 					<ul class="nav nav-group-sub" >
@@ -256,19 +234,9 @@
 						
 					</ul>
 				</li>	
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ $withdrawals }}"><i class="icon-images3"></i> <span> طلبات سحب الارباح </span></a>
-					<ul class="nav nav-group-sub" >
-						<li class="nav-item"><a href="{{ route('dashboard.withdrawals.index') }}" class="nav-link"> عرض كافه الطلبات</a></li>					
-					</ul>
-				</li>	
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ $challenges }}"><i class="icon-images3"></i> <span> التحديات </span></a>
-					<ul class="nav nav-group-sub" >
-						<li class="nav-item"><a href="{{ route('dashboard.challenges.index') }}" class="nav-link"> عرض كافه التحديات</a></li>
-						<li class="nav-item"><a href="{{ route('dashboard.challenges.create') }}" class="nav-link"> إضافه تحدى جديد</a></li>					
-					</ul>
-				</li>					
+
+
+				
 			</ul>
 		</div>
 		<!-- /main navigation -->

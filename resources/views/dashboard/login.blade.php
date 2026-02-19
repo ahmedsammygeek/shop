@@ -17,8 +17,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"> 
 	<style>
 		a , p , h1 , h2 , h3 , h4 , h5 , div , span , table , thead , tbody , button ,  th , tr , td {
-			    font-family: 'Cairo', sans-serif;
-			    font-weight: bold !important;
+			font-family: 'Cairo', sans-serif;
+			font-weight: bold !important;
 		} 
 	</style>
 
@@ -53,7 +53,7 @@
 
 					<!-- Login form -->
 					<form class="login-form" action="{{ route('dashboard.login') }}" method="POST" >
-				@include('dashboard.layouts.messages')
+						@include('dashboard.layouts.messages')
 						
 						@csrf
 						<div class="card mb-0">
