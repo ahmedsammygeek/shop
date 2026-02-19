@@ -1,4 +1,4 @@
-<footer class="section-footer bg-secondary text-white" style='background-color:#6B14BE !important'  >
+<footer class="section-footer bg-secondary text-white" style='background-color:#0B2D72 !important'  >
     <div class="container">
         <section class="footer-top  padding-y-lg">
             <div class="row">
@@ -24,9 +24,8 @@
                 <aside class="col-md col-6">
                     <h5 class="title">حسابى</h5>
                     <ul class="list-unstyled">
-                        <li> <a href="{{ route('complains') }}">اتصل بنا</a></li>
+                        <li> <a href="{{ route('site.index') }}">الرئيسيه</a></li>
                         <li> <a href="{{ route('site.account') }}">حسابى</a></li>
-                        <li> <a href="{{ route('site.incomes') }}">ارباحى</a></li>
                         <li> <a href="{{ route('login') }}">تسجيل الدخول</a></li>
                         <li> <a href="{{ route('register') }}">التسجيل فى الموقع</a></li>
                     </ul>
@@ -37,7 +36,7 @@
                     
                     <form class="form-inline mb-3">
                         <input type="text" placeholder="البريد الاكتورنى " class="border-0 w-auto form-control" name="">
-                        <button  class="btn ml-2 " style='background-color:#53cc05 !important;border-color:#53cc05 ;' >  اشترك </button>
+                        <button  class="btn ml-2 " style='background-color:#0992C2 !important;border-color:#0992C2 ;' >  اشترك </button>
                     </form>
 
                     <p class="text-white-50 mb-2"> تابعنا على مواقع التواصل </p>
@@ -53,7 +52,7 @@
         </section>  <!-- footer-top.// -->
 
         <section class="footer-bottom text-center">
-            <p class="text-white"> جميع الحقوق محفوظه موقع سوق التجار @ {{ Carbon\Carbon::today()->year }} </p>
+            <p class="text-white"> جميع الحقوق محفوظه موقع اسم الموقع @ {{ Carbon\Carbon::today()->year }} </p>
             
             <br>
         </section>

@@ -49,7 +49,7 @@
             @foreach ($slider_categories as $slider_category)
             <div class="pro-box">
                 <a href="{{ route('category.products' , $slider_category ) }}">
-                    <img src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="p1">
+                    <img src="{{ Storage::url('categories/'.$slider_category->image) }}" alt="{{ $slider_category->name }}">
                 </a>
             </div>
             @endforeach
@@ -99,12 +99,8 @@
                             <h4 class='text-center' > {{ $product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                    <span>أقل سعر للبيع</span>
-                                    <h4 class='text-center' style='color:#6B14BE !important' >{{ $product->price }} ج.م </h4>
-                                </div>
-                                <div class="list-left">
-                                    <span>أقل ربح لك</span>
-                                    <h4 class='text-center' style='font-size: 23px !important;color:#6B14BE !important;'> {{ $product->marketer_price }} ج.م</h4>
+                                    <span>سعر المنتج</span>
+                                    <h4 class='text-center' style='color:#0B2D72 !important' >{{ $product->price }} ج.م </h4>
                                 </div>
                             </li>
                             <div class="item-footer">
@@ -160,13 +156,10 @@
                             <h4 class="text-center"> {{ $product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                    <span>أقل سعر للبيع</span>
-                                    <h6 class="text-center" style="color:#6B14BE !important" >{{ $product->price }} م.ج</h6>
+                                     <span>سعر المنتج</span>
+                                    <h6 class="text-center" style="color:#0B2D72 !important" >{{ $product->price }} م.ج</h6>
                                 </div>
-                                <div class="list-left">
-                                    <span>أقل ربح لك</span>
-                                    <h6 class="text-center" style="font-size: 23px !important;color:#6B14BE !important" > {{ $product->marketer_price }} ج.م</h6>
-                                </div>
+                     
                             </li>
                             <div class="item-footer">
                                 <a href='{{ route('site.products.show' , $product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
@@ -223,13 +216,10 @@
                             <h4 class='text-center' > {{ $category_product->name }} </h4>
                             <li>
                                 <div class="list-right">
-                                    <span>أقل سعر للبيع</span>
-                                    <h6 class='text-center' style='color:#6B14BE !important' >{{ $category_product->price }} م.ج</h6>
+                                     <span>سعر المنتج</span>
+                                    <h6 class='text-center' style='color:#0B2D72 !important' >{{ $category_product->price }} م.ج</h6>
                                 </div>
-                                <div class="list-left">
-                                    <span>أقل ربح لك</span>
-                                    <h6 class='text-center' style='font-size: 23px !important;color:#6B14BE !important' > {{ $category_product->marketer_price }} ج.م</h6>
-                                </div>
+                          
                             </li>
                             <div class="item-footer">
                                 <a href='{{ route('site.products.show' , $category_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
@@ -248,12 +238,12 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" type="text/css" href="{{ Storage::url('site_assets/css/slick.css') }}"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 @endsection
 
 
 @section('scripts')
-<script type="text/javascript" src="{{ Storage::url('site_assets/js/slick.min.js') }}"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
     $(function() {
         $('.multiple-items').slick({
@@ -268,7 +258,7 @@
            infinite: true,
            arrows : true , 
            speed: 300,
-           slidesToShow: 6,
+           slidesToShow: 5,
            slidesToScroll: 2,
            responsive: [
            {

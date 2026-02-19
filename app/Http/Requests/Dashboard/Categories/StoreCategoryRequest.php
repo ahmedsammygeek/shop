@@ -24,7 +24,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'nullable|image' , 
+            'image' => 'nullable|mimes:jpeg,png,gif,avif' , 
             'name.en' => 'required|unique:categories,name->en' ,
             'name.ar' => 'required|unique:categories,name->ar' , 
             'category_id' => 'nullable' ,

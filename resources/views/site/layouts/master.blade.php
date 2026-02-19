@@ -19,7 +19,7 @@ if ($lang == 'ar') {
 
 
 
-    <link href="{{ asset('site_assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+    {{-- <link href="{{ asset('site_assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon"> --}}
     <script src="{{ asset('site_assets/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ asset('site_assets/css/main.css') }}">
     <link href="{{ asset('site_assets/css/ui.css') }}" rel="stylesheet" type="text/css"/>
@@ -43,26 +43,26 @@ if ($lang == 'ar') {
         } 
 
         .btn-primary {
-            background-color:#6B14BE !important;
-            border-color :#6B14BE !important;
+            background-color:#0B2D72 !important;
+            border-color :#0B2D72 !important;
 
         }
         .search-header {
-            border-color :#6B14BE !important;
+            border-color :#0B2D72 !important;
         }
 
         .icon-area i {
-            color : #6B14BE !important;
+            color : #0B2D72 !important;
         }
         .text-primary {
-            color : #6B14BE !important;
+            color : #0B2D72 !important;
         }
         .btn-outline-primary {
-            border-color: #6B14BE !important;
-            color:#6B14BE !important;
+            border-color: #0B2D72 !important;
+            color:#0B2D72 !important;
         }
         .btn-outline-primary:hover {
-            background-color:#6B14BE !important;
+            background-color:#0B2D72 !important;
             color:white !important;
         }
 

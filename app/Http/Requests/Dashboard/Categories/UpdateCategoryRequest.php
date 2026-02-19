@@ -25,7 +25,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         $id = Request::segment(4);
         return [
-            'image' => 'nullable|image' , 
+            'image' => 'nullable|mimes:jpeg,png,gif,avif' , 
             'name.en' => 'required|unique:categories,name->en,'.$id ,
             'name.ar' => 'required|unique:categories,name->ar,'.$id , 
             'category_id' => 'nullable' ,
