@@ -128,21 +128,12 @@
 
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ route('site.index') }}" > الرئيسيه </a> 
+                </li>
                 @foreach ($data['categories'] as $category)
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('category.products' , $category ) }}"> {{ $category->name }} </a>
-                    <div class="dropdown-menu dropdown-large" style="width: 900px;" >
-                        <nav class="row">
-                            @foreach ($category->children as $child)
-                            <div class="col-3">
-                                <h5> <a  href="{{ route('category.products' , $child ) }}"> {{ $child->name }} </a> </h5>
-                               @foreach ($child->children as $sub_child)
-                                   <a style='font-size:16px;font-weight: normal!important;' href="{{ route('category.products' , $sub_child ) }}">{{ $sub_child->name }}</a>
-                               @endforeach
-                            </div>
-                            @endforeach
-                        </nav> <!--  row end .// -->
-                    </div> <!--  dropdown-menu dropdown-large end.// -->
+                    <a class="nav-link" href="{{ route('category.products' , $category ) }}"> {{ $category->name }} </a>
                 </li>
                 @endforeach
                
