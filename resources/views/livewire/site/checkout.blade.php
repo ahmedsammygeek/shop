@@ -8,7 +8,6 @@
               <th scope="col" width="150">السعر المنتج الاصلى </th>
               <th scope="col" width="150">سعر البيع للعميل</th>
               <th scope="col" width="120">الكميه</th>
-              <th scope="col" width="120">ربحك</th>
             </tr>
           </thead>
           <tbody>
@@ -43,12 +42,6 @@
               <td> 
                {{ $item->quantity }} <span class="text-muted"> قطعه </span>
               </td>
-
-              <td> 
-                <div class="price-wrap"> 
-                 {{ ( $item->variation?->product->marketer_price * $item->quantity ) + ( ($item->price - $item->variation?->product->getPrice())) * $item->quantity }} <span class="text-muted"> جنيه </span>
-               </div> 
-             </td>
 
            </tr>
            @endforeach

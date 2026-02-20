@@ -36,17 +36,6 @@ class Checkout extends Component
         return 0;
     }
 
-    public function getMarketerBounseProperty()
-    {
-        $marketer_bounse = 0;
-        $items = Cart::where('user_id' , Auth::id() )->get();
-        foreach ($items as $item) {
-           $marketer_bounse += $item->variation?->product->marketer_price + (($item->price - $item->variation?->product->getPrice()) * $item->quantity);
-        }
-        return  $marketer_bounse;
-    }
-
-
     public function getSubTotalProperty()
     {
         $total = 0;
