@@ -66,7 +66,7 @@ if ($lang == 'ar') {
  <link href="{{ asset('site_assets/fonts/fontawesome/css/all.min3661.css') }}" type="text/css" rel="stylesheet">
 
  <style>
-     .btn-primary {
+    .btn-primary {
         background-color:#053534 !important;
         border-color :#053534 !important;
 
@@ -89,14 +89,16 @@ if ($lang == 'ar') {
         background-color:#053534 !important;
         color:white !important;
     }
-    
-{{--     input.search-input:focus {
-        border: 5px solid #053534 !important;
+
+    input.search-input:focus {
+        border: none !important;
+        outline: none !important; 
     }  
 
     select.search-input:focus {
-        border: 5px solid #053534 !important;
-    }  --}}
+        border: none !important;
+        outline: none !important;
+    } 
 </style>
 @yield('styles')
 <link href="{{ asset('site_assets/css/ui3661.css') }}" rel="stylesheet" type="text/css"/>
