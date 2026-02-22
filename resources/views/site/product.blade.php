@@ -25,37 +25,30 @@
       <main class="col-md-6">
         <article class="product-info-aside">
 
-          <h2 class="title mt-3" style='color: #0B2D72' > {{ $product->name }} </h2>
+          <h2 class="title mt-3" style='color:#9d8979' > {{ $product->name }} </h2>
 
           <div class="rating-wrap my-3">
-           <ul class="rating-stars">
-            <li style="width:80%" class="stars-active"> 
-             <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-             <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-             <i class="fa fa-star"></i> 
-           </li>
-           <li>
-             <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-             <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-             <i class="fa fa-star"></i> 
-           </li>
-         </ul>
-         <small class="label-rating text-muted">132 تقييم</small>
-         <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 تم شرائه </small>
-       </div> <!-- rating-wrap.// -->
-       @livewire('site.product-selector' , ['product' => $product ] )
-     </article> <!-- product-info-aside .// -->
-   </main> <!-- col.// -->
- </div> <!-- row.// -->
-
- <!-- ================ ITEM DETAIL END .// ================= -->
-
-
-</div> <!-- container .//  -->
+            <ul class="rating-stars">
+              <li style="width:100%" class="stars-active"> 
+                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+              </li>
+              <li>
+                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+              </li>
+            </ul>
+{{--             <small class="label-rating text-muted">132 تقييم</small>
+            <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 تم شرائه </small> --}}
+          </div>
+          @livewire('site.product-selector' , ['product' => $product ] )
+        </article> 
+      </main> 
+    </div> 
+  </div> 
 </section>
-<!-- ========================= SECTION CONTENT END// ========================= -->
-
-<!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y bg">
   <div class="container">
 
@@ -144,12 +137,12 @@
           </div>
           <div class="item-text">
             <h6 class='text-center' > {{ $best_selling_product->name }} </h6>
-          
 
-              <div class="list-left">
-                <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> {{ $best_selling_product->price }} ج.م</h6>
-              </div>
-         
+
+            <div class="list-left">
+              <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> {{ $best_selling_product->price }} ج.م</h6>
+            </div>
+
             <div class="item-footer">
               <a href='{{ route('site.products.show' , $best_selling_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
             </div>
@@ -164,7 +157,7 @@
 
 @endsection
 
-@section('scripts')
+@push('scripts')
 
 <script type="text/javascript">
   $(function() {
@@ -178,8 +171,8 @@
     });
   });
 </script>
-@endsection
+@endpush
 @section('styles')
-<link rel="icon" href="{{ asset('image-zoom/css/image-zoom.css') }}">
+{{-- <link rel="icon" href="{{ asset('image-zoom/css/image-zoom.css') }}"> --}}
 <link rel="stylesheet" href="{{ Storage::url('site_assets/css/slick-theme.css') }}">
 @endsection

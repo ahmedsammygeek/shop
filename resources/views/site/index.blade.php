@@ -97,7 +97,7 @@
                             <h6 class='text-center' > {{ $product->name }} </h6>
                           
                                 <div class="list-right">
-                                    <h4 class='text-center' style='color:#0B2D72 !important' >{{ $product->price }} ج.م </h4>
+                                    <h4 class='text-center' style='color:#053534 !important' >{{ $product->price }} ج.م </h4>
                                 </div>
                             
                             <div class="item-footer">
@@ -154,7 +154,7 @@
                          
                                 <div class="list-right">
                                    
-                                    <h6 class="text-center" style="color:#0B2D72 !important" >{{ $product->price }} م.ج</h6>
+                                    <h6 class="text-center" style="color:#053534 !important" >{{ $product->price }} م.ج</h6>
                                 </div>
                      
                         
@@ -213,12 +213,12 @@
                             <h4 class='text-center' > {{ $category_product->name }} </h4>
                            
                                 <div class="list-right">
-                                    <h6 class='text-center' style='color:#0B2D72 !important' >{{ $category_product->price }} م.ج</h6>
+                                    <h6 class='text-center' style='color:#053534 !important' >{{ $category_product->price }} م.ج</h6>
                                 </div>
                           
                      
                             <div class="item-footer">
-                                <a href='{{ route('site.products.show' , $category_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
+                                <a href='{{ route('site.products.show' , $category_product ) }}'   class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
                             </div>
                         </div>
                     </div>

@@ -43,26 +43,26 @@ if ($lang == 'ar') {
         } 
 
         .btn-primary {
-            background-color:#0B2D72 !important;
-            border-color :#0B2D72 !important;
+            background-color:#053534 !important;
+            border-color :#053534 !important;
 
         }
         .search-header {
-            border-color :#0B2D72 !important;
+            border-color :#053534 !important;
         }
 
         .icon-area i {
-            color : #0B2D72 !important;
+            color : #053534 !important;
         }
         .text-primary {
-            color : #0B2D72 !important;
+            color : #053534 !important;
         }
         .btn-outline-primary {
-            border-color: #0B2D72 !important;
-            color:#0B2D72 !important;
+            border-color: #053534 !important;
+            color:#053534 !important;
         }
         .btn-outline-primary:hover {
-            background-color:#0B2D72 !important;
+            background-color:#053534 !important;
             color:white !important;
         }
 

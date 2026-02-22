@@ -21,6 +21,7 @@
         @livewire('site.product-dropdown' ,  ['variations' => $initialVariation ] )
         @endif
         <br>
+        <label> الكميه </label>
         <div class="form-group col-md flex-grow-0">
             <div class="input-group mb-3 input-spinner">
                 <div class="input-group-prepend">

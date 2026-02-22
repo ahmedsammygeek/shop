@@ -1,4 +1,4 @@
-<footer class="section-footer bg-secondary text-white" style='background-color:#0B2D72 !important'  >
+<footer class="section-footer bg-secondary t" style='background-color:#053534 !important;color:#9d8979'  >
     <div class="container">
         <section class="footer-top  padding-y-lg">
             <div class="row">
@@ -51,7 +51,7 @@
             </div> <!-- row.// -->
         </section>  <!-- footer-top.// -->
 
-        <section class="footer-bottom text-center">
+        <section class="footer-bottom text-center" style="color:#9d8979" >
             <p class="text-white"> جميع الحقوق محفوظه موقع اسم الموقع @ {{ Carbon\Carbon::today()->year }} </p>
             
             <br>

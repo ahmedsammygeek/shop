@@ -118,16 +118,6 @@
 								<td> {{ $product->rate }} </td>
 							</tr>							
 							<tr>
-								<th> الكميات </th>
-								<td>
-									<ul>
-										@foreach ($product->warehouses as $product_warehouse)
-										<li> {{ $product_warehouse->warehouse?->name }} => {{ $product_warehouse->quantity }} قطعه</li>
-										@endforeach
-									</ul>
-								</td>
-							</tr>
-							<tr>
 								<th> صوره المنتج الرئيسيه </th>
 								<td> <a href="{{ Storage::url('products/'.$product->image) }}"> <img class='rounded img-preview' data-popup="lightbox" data-gallery="gallery1" src="{{ Storage::url('products/'.$product->image) }}" alt=""> </a> </td>
 							</tr>					
