@@ -41,31 +41,6 @@ if ($lang == 'ar') {
             font-family: 'Cairo', sans-serif;
             font-weight: bold !important;
         } 
-
-        .btn-primary {
-            background-color:#053534 !important;
-            border-color :#053534 !important;
-
-        }
-        .search-header {
-            border-color :#053534 !important;
-        }
-
-        .icon-area i {
-            color : #053534 !important;
-        }
-        .text-primary {
-            color : #053534 !important;
-        }
-        .btn-outline-primary {
-            border-color: #053534 !important;
-            color:#053534 !important;
-        }
-        .btn-outline-primary:hover {
-            background-color:#053534 !important;
-            color:white !important;
-        }
-
     </style>
     @else
     <link href="{{ Storage::url('site_assets/css/bootstrap3661.css') }}" rel="stylesheet" type="text/css"/>
@@ -79,33 +54,65 @@ if ($lang == 'ar') {
             position : absolute;
         }
         .nextArrow {
-           top : 120px;
-           display:block;
-           z-index: 100;
-           position : absolute;
-           left : -8px;
-       }
+         top : 120px;
+         display:block;
+         z-index: 100;
+         position : absolute;
+         left : -8px;
+     }
+ </style>
 
+ <!-- Font awesome 5 -->
+ <link href="{{ asset('site_assets/fonts/fontawesome/css/all.min3661.css') }}" type="text/css" rel="stylesheet">
 
-   </style>
+ <style>
+     .btn-primary {
+        background-color:#053534 !important;
+        border-color :#053534 !important;
 
-   <!-- Font awesome 5 -->
-   <link href="{{ asset('site_assets/fonts/fontawesome/css/all.min3661.css') }}" type="text/css" rel="stylesheet">
-   @yield('styles')
-   <link href="{{ asset('site_assets/css/ui3661.css') }}" rel="stylesheet" type="text/css"/>
-   <link href="{{ asset('site_assets/css/responsive3661.css') }}" rel="stylesheet" type="text/css" />
-   <script src="{{ asset('site_assets/js/script3661.js') }}" type="text/javascript"></script>
-   <script src="{{ asset('site_assets/js/owl.carousel.min.js') }}"></script>
-   <script src="{{ asset('site_assets/js/main.js') }}"></script>
-   <script src="{{ asset('site_assets/js/all.min.js') }}"></script>
-   <script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
-   <script src="{{ asset('site_assets/js/slick.min.js') }}"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    }
+    .search-header {
+        border-color :#053534 !important;
+    }
 
-   @yield('scripts')
-   @stack('scripts')
-   <livewire:scripts />
-    <x-livewire-alert::scripts />
+    .icon-area i {
+        color : #053534 !important;
+    }
+    .text-primary {
+        color : #053534 !important;
+    }
+    .btn-outline-primary {
+        border-color: #053534 !important;
+        color:#053534 !important;
+    }
+    .btn-outline-primary:hover {
+        background-color:#053534 !important;
+        color:white !important;
+    }
+    
+{{--     input.search-input:focus {
+        border: 5px solid #053534 !important;
+    }  
+
+    select.search-input:focus {
+        border: 5px solid #053534 !important;
+    }  --}}
+</style>
+@yield('styles')
+<link href="{{ asset('site_assets/css/ui3661.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('site_assets/css/responsive3661.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ asset('site_assets/js/script3661.js') }}" type="text/javascript"></script>
+<script src="{{ asset('site_assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('site_assets/js/main.js') }}"></script>
+<script src="{{ asset('site_assets/js/all.min.js') }}"></script>
+<script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
+<script src="{{ asset('site_assets/js/slick.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@yield('scripts')
+@stack('scripts')
+<livewire:scripts />
+<x-livewire-alert::scripts />
 </head>
 <body>
 

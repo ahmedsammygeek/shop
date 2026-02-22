@@ -4,7 +4,7 @@
 
 
  <header class="section-header">
-     <nav class="navbar d-none d-md-flex p-md-0 navbar-expand-sm navbar-light border-bottom">
+{{--      <nav class="navbar d-none d-md-flex p-md-0 navbar-expand-sm navbar-light border-bottom">
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                 </ul> <!-- list-inline //  -->
             </div> <!-- navbar-collapse .// -->
         </div> <!-- container //  -->
-    </nav>
+    </nav> --}}
 
     <section class="header-main border-bottom">
         <div class="container">
@@ -40,13 +40,13 @@
                 <div class="col-xl-6 col-lg-5 col-md-6">
                     <form action="{{ route('search') }}" class="search-header">
                         <div class="input-group w-100">
-                            <select class="custom-select border-right"  name="category_name">
+                            <select class="custom-select border-right search-input"  name="category_name">
                                 <option value="all"> جميع التصنيفات </option>
                                 @foreach ($data['categories'] as $category)
                                 <option value="{{ $category->id }}">  {{ $category->name }}  </option>
                                 @endforeach
                             </select>
-                            <input type="text" name='search' class="form-control" placeholder="ابحث الان عن المنتجات داخل الموقع" >
+                            <input type="text" name='search' class="form-control search-input" placeholder="ابحث الان عن المنتجات داخل الموقع" >
 
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
@@ -54,7 +54,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form> <!-- search-wrap .end// -->
+                    </form> 
                 </div> <!-- col.// -->
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="widgets-wrap float-md-right">
