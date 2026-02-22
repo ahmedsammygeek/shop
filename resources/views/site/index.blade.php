@@ -102,7 +102,7 @@
                             <h6 class='text-center' > {{ $product->name }} </h6>
 
                             <div class="list-right">
-                                <h4 class='text-center' style='color:#053534 !important' >{{ $product->price }} ج.م </h4>
+                                <h4 class='text-center' style='color:#053534 !important' >{{ $product->price }} {{ Session::get('currency') }} </h4>
                             </div>
 
                             <div class="item-footer">
@@ -163,7 +163,7 @@
 
                         <div class="list-right">
 
-                            <h6 class="text-center" style="color:#053534 !important" >{{ $product->price }} م.ج</h6>
+                            <h6 class="text-center" style="color:#053534 !important" >{{ $product->price }}  {{ Session::get('currency') }} </h6>
                         </div>
 
 
@@ -195,7 +195,7 @@
     <div class="">
 
         <div class="multiple-items">
-            @foreach ($home_category->products()->latest()->limit(10)->get() as $category_product)
+            @foreach ($home_category->products as $category_product)
             <div class="col-lg-12">
                 <div class="item-box">
                     <div class="item-img">
@@ -228,7 +228,7 @@
                         <h4 class='text-center' > {{ $category_product->name }} </h4>
 
                         <div class="list-right">
-                            <h6 class='text-center' style='color:#053534 !important' >{{ $category_product->price }} م.ج</h6>
+                            <h6 class='text-center' style='color:#053534 !important' >{{ $category_product->price }} {{ Session::get('currency') }} </h6>
                         </div>
 
 

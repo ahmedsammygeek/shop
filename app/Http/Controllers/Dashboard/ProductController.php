@@ -77,8 +77,6 @@ class ProductController extends Controller
         }
 
 
-        dd('done');
-
         if ($request->has('add')) {
             $variation = new Variation;
             $variation->product_id = $product->id;
@@ -90,13 +88,13 @@ class ProductController extends Controller
         }
 
         if ($request->has('add')) {
-           return redirect(route('dashboard.products.index'))->with('success' , trans('products.adding_success'));
-       } else {
-        return redirect(route('dashboard.products.variations.create' , $product ))->with('success' , trans('products.adding_success'));
+            return redirect(route('dashboard.products.index'))->with('success' , trans('products.adding_success'));
+        } else {
+            return redirect(route('dashboard.products.variations.create' , $product ))->with('success' , trans('products.adding_success'));
+        }
+
+
     }
-
-
-}
 
     /**
      * Display the specified resource.

@@ -22,6 +22,7 @@ class EnsureSettingDefaultCountryMiddleware
             $country = Country::where('active' , 1 )->first();        
             // Store in session
             Session::put('user_country', $country->id);
+            Session::put('currency', $country->currency);
         }
         return $next($request);
     }

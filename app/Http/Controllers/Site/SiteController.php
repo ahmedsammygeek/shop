@@ -25,6 +25,7 @@ class SiteController extends Controller
             $country = Country::find($country_id);
             if ($country) {
                 Session::put('user_country', $country->id);
+                Session::put('currency', $country->currency);
             }
         }
 
@@ -33,11 +34,36 @@ class SiteController extends Controller
 
     public function index() {
         $slides = Slide::where('active' , 1)->latest()->get();
-        $latest_products = Product::with(['category' , 'images'])->latest()->take(12)->get();
+        $latest_products = Product::with(['category' , 'images' , 'prices' ])->latest()->take(12)->get();
         $best_selling_products = Product::orderBy('sales_count' , 'DESC' )->take(6)->get();
         $categories = Category::where('show_after_slider' , 1 )->latest()->get();
-        $home_categories = Category::where('show_in_home_page' , 1 )->latest()->get();
+        $home_categories = Category::with('products')->where('show_in_home_page' , 1 )->latest()->get();
         $slider_categories = Category::where('show_after_slider' , 1 )->latest()->get();
+
+
+        $latest_products = $latest_products->map(function($latest_product){
+            $country_id = Session::get('user_country');
+            $latest_product->price =  $latest_product->prices->where('country_id' , $country_id)->first()?->price ;
+            return $latest_product;
+        });
+
+
+        $best_selling_products = $best_selling_products->map(function($best_selling_product){
+            $country_id = Session::get('user_country');
+            $best_selling_product->price =  $best_selling_product->prices->where('country_id'  , $country_id)->first()?->price ;
+            return $best_selling_product;
+        });
+
+        $home_categories = $home_categories->map(function($home_category){
+
+            $home_category->products->map(function($product){
+                $country_id = Session::get('user_country');
+                $product->price =  $product->prices->where('country_id'  , $country_id)->first()?->price ;
+                return $product;
+            });
+
+            return $home_category;
+        });
         return view('site.index' , compact('slides' , 'slider_categories' , 'home_categories' , 'categories' , 'latest_products' , 'best_selling_products'));
     }
 
@@ -236,13 +262,13 @@ class SiteController extends Controller
         $zip_file =  Zip::create( $product->name.'-images.zip');
         $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product->image, $product->image );
         foreach ($product->images as $product_image) {
-           $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product_image->image, $product_image->image );
-       }
-       return $zip_file;
-   }
+         $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product_image->image, $product_image->image );
+     }
+     return $zip_file;
+ }
 
-   public function phone()
-   {
+ public function phone()
+ {
     return view('site.phone');
 }
 
