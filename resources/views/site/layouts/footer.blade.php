@@ -1,5 +1,6 @@
 <footer class="section-footer bg-secondary t" style='background-color:#053534 !important;color:#9d8979'  >
     <div class="container">
+        
         <section class="footer-top  padding-y-lg">
             <div class="row">
                 <aside class="col-md-4 col-12">

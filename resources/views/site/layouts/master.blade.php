@@ -18,20 +18,15 @@ if ($lang == 'ar') {
     <title> اسم المتجر  </title>
 
 
-
     {{-- <link href="{{ asset('site_assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon"> --}}
     <script src="{{ asset('site_assets/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
-    <link rel="stylesheet" href="{{ asset('site_assets/css/main.css') }}">
     <link href="{{ asset('site_assets/css/ui.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('site_assets/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('site_assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('site_assets/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('site_assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('site_assets/css/custom-css.css') }}">
 
     <!-- Bootstrap4 files-->
     <script src="{{ asset('site_assets/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     @if ($lang == 'ar')
-    <link rel="stylesheet" href="{{ asset('site_assets/css/main-ar.css') }}">
     <link href="{{ asset('site_assets/css/bootstrap-rtl.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,39 +61,8 @@ if ($lang == 'ar') {
  <link href="{{ asset('site_assets/fonts/fontawesome/css/all.min3661.css') }}" type="text/css" rel="stylesheet">
 
  <style>
-    .btn-primary {
-        background-color:#053534 !important;
-        border-color :#053534 !important;
+    
 
-    }
-    .search-header {
-        border-color :#053534 !important;
-    }
-
-    .icon-area i {
-        color : #053534 !important;
-    }
-    .text-primary {
-        color : #053534 !important;
-    }
-    .btn-outline-primary {
-        border-color: #053534 !important;
-        color:#053534 !important;
-    }
-    .btn-outline-primary:hover {
-        background-color:#053534 !important;
-        color:white !important;
-    }
-
-    input.search-input:focus {
-        border: none !important;
-        outline: none !important; 
-    }  
-
-    select.search-input:focus {
-        border: none !important;
-        outline: none !important;
-    } 
 </style>
 @yield('styles')
 <link href="{{ asset('site_assets/css/ui3661.css') }}" rel="stylesheet" type="text/css"/>
@@ -117,6 +81,15 @@ if ($lang == 'ar') {
 <x-livewire-alert::scripts />
 </head>
 <body>
+{{--     <div class="sticky-header">
+    <select class="sticky-select">
+      <option>Select an option...</option>
+      <option>Option 1 - Home</option>
+      <option>Option 2 - Products</option>
+      <option>Option 3 - Services</option>
+      <option>Option 4 - Contact</option>
+    </select>
+  </div> --}}
 
     @include('site.layouts.header')
 
