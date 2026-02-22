@@ -45,6 +45,8 @@ class CountryContoller extends Controller
         $country = new Country;
         $country->setTranslation('name' , 'ar'  , $request->name_ar );
         $country->setTranslation('name' , 'en'  , $request->name_en );
+        $country->setTranslation('currency' , 'ar'  , $request->currency_ar );
+        $country->setTranslation('currency' , 'en'  , $request->currency_en );
         $country->active = $request->filled('active') ? 1 : 0;
         $country->user_id = Auth::id();
 
@@ -94,6 +96,8 @@ class CountryContoller extends Controller
     {
         $country->setTranslation('name' , 'ar'  , $request->name_ar );
         $country->setTranslation('name' , 'en'  , $request->name_en );
+        $country->setTranslation('currency' , 'ar'  , $request->currency_ar );
+        $country->setTranslation('currency' , 'en'  , $request->currency_en );
         $country->active = $request->filled('active') ? 1 : 0;
 
         if ($request->hasFile('image')) {

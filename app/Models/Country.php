@@ -10,7 +10,7 @@ class Country extends Model
 
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['name'];
+    public $translatable = ['name' , 'currency'];
 
 
 

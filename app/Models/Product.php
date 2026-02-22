@@ -50,9 +50,6 @@ class Product extends Model
         $this->setTranslation('description' , 'en' , $data['description']['en']);
         $this->category_id = $data['category_id'];
         $this->brand_id = $data['brand_id'];
-        $this->price = $data['price'];
-        $this->price_after_discount = $data['price_after_discount'];
-        $this->discount_percentage = $data['discount_percentage'];
         $this->barcode = $data['barcode'];
 
         $this->user_id = Auth::id();
@@ -69,9 +66,6 @@ class Product extends Model
         $this->setTranslation('description' , 'en' , $data['description']['en']);
         $this->category_id = $data['category_id'];
         $this->brand_id = $data['brand_id'];
-        $this->price = $data['price'];
-        $this->price_after_discount = $data['price_after_discount'];
-        $this->discount_percentage = $data['discount_percentage'];
         $this->active = isset($data['active']) ? 1 : 0;
         $this->barcode = $data['barcode'];
 
@@ -86,6 +80,12 @@ class Product extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+
+    public function prices()
+    {
+        return $this->hasMany(ProductCountryPrice::class);
     }
 
 

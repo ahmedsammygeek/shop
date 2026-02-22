@@ -16,6 +16,9 @@ class Testcontroller extends Controller
      */
     public function index()
     {
+
+
+        dd('gg');
         $product = Product::first();
 
 

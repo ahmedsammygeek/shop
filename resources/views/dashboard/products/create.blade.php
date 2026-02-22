@@ -153,7 +153,8 @@
 										</div>
 									</div>
 
-									<div class="col-md-4">
+
+{{-- 									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> سعر المنتج </label>
 											<input type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" >
@@ -179,8 +180,14 @@
 											<p  class='text-danger' >  {{ $message }} </p>
 											@enderror
 										</div>
-									</div>
+									</div> --}}
 								</div>			
+							</fieldset>
+
+							<fieldset>
+								<div class="row">
+									@livewire('dashboard.products.product-countries-prices')
+								</div>
 							</fieldset>
 						</div>
 					</div>

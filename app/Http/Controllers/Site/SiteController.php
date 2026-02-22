@@ -4,33 +4,32 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Page;
-use App\Models\Slide;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Governorate;
-use App\Models\User;
-use App\Models\Cart;
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\City;
-use App\Models\Complain;
+use App\Models\{Page , Slide , Product, Category, Governorate, User, Cart, Order, OrderItem , City , Complain , Country};
+use App\Http\Requests\Site\{RegisterRequest ,SoreOrderRequest , LoginRequest , StoreComplainRequest, UpdatePhoneRequest };
+use App\Jobs\{SendVerificationCodeToViaPhoneNumberJob, IncreasProductSalesCountJob ,IncreasProductViewsCountJob };
 use Auth;
 use Str;
 use Storage;
 use Hash;
 use Zip;
-use App\Http\Requests\Site\RegisterRequest;
-use App\Http\Requests\Site\SoreOrderRequest;
-use App\Http\Requests\Site\LoginRequest;
-use App\Http\Requests\Site\StoreComplainRequest;
-use App\Jobs\SendVerificationCodeToViaPhoneNumberJob;
-use App\Jobs\IncreasProductSalesCountJob;
-use App\Jobs\IncreasProductViewsCountJob;
-use App\Http\Requests\Site\UpdatePhoneRequest;
+use Session;
 class SiteController extends Controller
 {
 
+
+    public function setCountry(Request $request)
+    {
+
+        if ($request->filled('country_id')) {
+            $country_id = $request->country_id;
+            $country = Country::find($country_id);
+            if ($country) {
+                Session::put('user_country', $country->id);
+            }
+        }
+
+        return redirect()->back();
+    }
 
     public function index() {
         $slides = Slide::where('active' , 1)->latest()->get();
@@ -238,22 +237,22 @@ class SiteController extends Controller
         $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product->image, $product->image );
         foreach ($product->images as $product_image) {
            $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product_image->image, $product_image->image );
-        }
-        return $zip_file;
-    }
+       }
+       return $zip_file;
+   }
 
-    public function phone()
-    {
-        return view('site.phone');
-    }
+   public function phone()
+   {
+    return view('site.phone');
+}
 
-    public function update_phone(UpdatePhoneRequest $request)
-    {
-        $user = Auth::user();
-        $user->phone = $request->phone;
-        $user->save();
-        dispatch(new SendVerificationCodeToViaPhoneNumberJob($request->phone));
-        return redirect(route('site.verify_phone'));
-    }
+public function update_phone(UpdatePhoneRequest $request)
+{
+    $user = Auth::user();
+    $user->phone = $request->phone;
+    $user->save();
+    dispatch(new SendVerificationCodeToViaPhoneNumberJob($request->phone));
+    return redirect(route('site.verify_phone'));
+}
 
 }

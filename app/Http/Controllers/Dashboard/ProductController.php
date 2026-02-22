@@ -4,19 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Warehouse;
-use App\Models\ProductImage;
-use App\Models\WarehouseProduct;
-use App\Models\Country;
-use App\Models\Variation;
-use App\Models\ProductShipping;
-use App\Models\OrderItem;
+use App\Models\{Brand  , ProductCountryPrice , Category   , Product, ProductImage, Country , Variation ,ProductShipping ,  OrderItem};
 use Auth;
-use App\Http\Requests\Dashboard\Products\StoreProductRequest;
-use App\Http\Requests\Dashboard\Products\UpdateProductRequest;
+use App\Http\Requests\Dashboard\Products\{StoreProductRequest , UpdateProductRequest};
 class ProductController extends Controller
 {
     /**
@@ -48,11 +38,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // StoreProductRequest
     public function store(StoreProductRequest $request)
     {
 
 
+        // dd($request->all());
         $product = new Product;
+
+
         if(!$product->add($request->all()))
             return redirect()->back()->with('error' , trans('products.adding_error'));
         if($request->hasFile('image')) {
@@ -71,6 +65,20 @@ class ProductController extends Controller
             $product->images()->saveMany($images);
         }
 
+
+        foreach ($request->price as $key => $price) {
+            $product_country_price = new ProductCountryPrice;
+            $product_country_price->user_id = Auth::id();
+            $product_country_price->product_id = $product->id;
+            $product_country_price->country_id = $key;
+            $product_country_price->price = $price;
+            $product_country_price->price_after_discount = $request->price_after_discount[$key];
+            $product_country_price->save();
+        }
+
+
+        dd('done');
+
         if ($request->has('add')) {
             $variation = new Variation;
             $variation->product_id = $product->id;
@@ -83,12 +91,12 @@ class ProductController extends Controller
 
         if ($request->has('add')) {
            return redirect(route('dashboard.products.index'))->with('success' , trans('products.adding_success'));
-        } else {
-            return redirect(route('dashboard.products.variations.create' , $product ))->with('success' , trans('products.adding_success'));
-        }
-
-        
+       } else {
+        return redirect(route('dashboard.products.variations.create' , $product ))->with('success' , trans('products.adding_success'));
     }
+
+
+}
 
     /**
      * Display the specified resource.

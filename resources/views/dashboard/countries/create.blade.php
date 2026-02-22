@@ -30,20 +30,10 @@
 				@csrf
 				<div class="card-body">
 					<fieldset class="mb-3">
-						<legend class="text-uppercase font-size-sm font-weight-bold"> بيانات المحافظه </legend>
+						<legend class="text-uppercase font-size-sm font-weight-bold"> بيانات الدوله </legend>
 						<div class="form-group row">
 
-							<div class="col-md-4">
-								<div  class='mb-2' >
-									<label class="col-form-label"> علم الدوله 56 * 40 </label>
-									<input type="file" class="form-control @error('image') is-invalid @enderror" name="image"  >
-									@error('image')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div  class='mb-2' >
 									<label class="col-form-label"> الاسم بالعربيه </label>
 									<input type="text" class="form-control @error('name_ar') is-invalid @enderror" name="name_ar" value="{{ old('name_ar') }}" >
@@ -52,7 +42,7 @@
 									@enderror
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-6">
 								<div  class='mb-2' >
 									<label class="col-form-label"> الاسم بالانجليزيه </label>
 									<input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en') }}" >
@@ -60,6 +50,29 @@
 									<p  class='text-danger' >  {{ $message }} </p>
 									@enderror
 								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div  class='mb-2' >
+									<label class="col-form-label"> رمز العمله بالعربيه </label>
+									<input type="text" class="form-control @error('currency_ar') is-invalid @enderror" name="currency_ar" value="{{ old('currency_ar') }}" >
+									@error('currency_ar')
+									<p  class='text-danger' >  {{ $message }} </p>
+									@enderror
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div  class='mb-2' >
+									<label class="col-form-label"> رمز العمله بالانجليزيه </label>
+									<input type="text" class="form-control @error('currency_en') is-invalid @enderror" name="currency_en" value="{{ old('currency_en') }}" >
+									@error('currency_en')
+									<p  class='text-danger' >  {{ $message }} </p>
+									@enderror
+								</div>
+							</div>
+
+							<div class="col-md-12 mt-2">
+								<p> لتفقد جميع اعلام الدول برجاء  <a target="_blank" href="https://emojipedia.org"> زياره الموقع </a> </p>
 							</div>
 
 							

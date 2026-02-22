@@ -103,6 +103,7 @@ Route::group([
         Route::get('/marketers/{marketer}/login' , [MarketerController::class , 'login'] )->name('marketers.login');
     });
 
+Route::post('set_user_countr' , [SiteController::class , 'setCountry'] )->name('site.set_country');
 Route::get('verify/phone' , [PhoneVerificationController::class , 'index' ] )->name('site.verify_phone');
 Route::post('verify/phone' , [PhoneVerificationController::class , 'store' ] )->name('site.verify_phone.store');
 Route::post('/register' , [SiteController::class , 'store_register'])->name('site.register');

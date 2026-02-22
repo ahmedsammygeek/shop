@@ -36,18 +36,7 @@ class StoreProductRequest extends FormRequest
             'image' => 'required|mimes:jpeg,png,gif,avif' , 
             'images' => 'nullable'  , 
             'images.*' => 'required|mimes:jpeg,png,gif,avif' , 
-            // 'marketer_price' => 'required' , 
-            'price' => 'required' , 
-            'price_after_discount' => 'nullable' , 
-            'discount_percentage' => 'nullable' , 
-            // 'warehouses' => 'nullable' , 
-            // 'quantity' => 'nullable' , 
-            // 'points' => 'nullable' , 
-            // 'minimam_gomla_number' => 'nullable' , 
-            // 'minimam_stock_alert' => 'required' , 
-            // 'country_id' => 'required' , 
-            // 'min_price' => 'required' , 
-            // 'max_price' => 'required' , 
+            'price.*' => 'required' , 
         ];
     }
 }

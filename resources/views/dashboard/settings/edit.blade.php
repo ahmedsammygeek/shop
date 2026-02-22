@@ -112,45 +112,6 @@ $lang = LaravelLocalization::getCurrentLocale();
 									@enderror
 								</div>
 							</div>
-
-							<div class="col-md-3">
-								<div  class='mb-2' >
-									<label class="col-form-label"> قيمه النقاط بالقروش </label>
-									<input type="text" class="form-control @error('points_money') is-invalid @enderror" name="points_money" value="{{ $info->points_money }}" >
-									@error('points_money')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div  class='mb-2' >
-									<label class="col-form-label"> الحد الادنى للنقاط للسحب </label>
-									<input type="text" class="form-control @error('minimam_points_can_be_withdrawald') is-invalid @enderror" name="minimam_points_can_be_withdrawald" value="{{ $info->minimam_points_can_be_withdrawald }}" >
-									@error('minimam_points_can_be_withdrawald')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div  class='mb-2' >
-									<label class="col-form-label"> عدد الساعات قبل نزول ارباح المسوق </label>
-									<input type="text" class="form-control @error('days_to_valid_marketer_money') is-invalid @enderror" name="days_to_valid_marketer_money" value="{{ $info->days_to_valid_marketer_money }}" >
-									@error('days_to_valid_marketer_money')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div  class='mb-2' >
-									<label class="col-form-label"> الحد الادنى لطلب سحب الارباح</label>
-									<input type="text" class="form-control @error('minimam_money_can_be_withdrawald') is-invalid @enderror" name="minimam_money_can_be_withdrawald" value="{{ $info->minimam_money_can_be_withdrawald }}" >
-									@error('minimam_money_can_be_withdrawald')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
 						</div>						
 					</fieldset>
 				</div>
