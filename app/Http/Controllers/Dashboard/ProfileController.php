@@ -51,7 +51,13 @@ class ProfileController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->back()->with('success' , 'تم تعديل كلمه المرور بنجاح' );
+    }
 
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect(route('dashboard.login'))->with('success' , 'تم تسجيل الخروج بنجاح' );
     }
 
 
