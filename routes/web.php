@@ -81,6 +81,7 @@ Route::group([
         Route::patch('profile' , [ProfileController::class , 'update'] )->name('profile.update');
         Route::get('password' , [ProfileController::class , 'password'] )->name('password');
         Route::patch('password' , [ProfileController::class ,'update_password'] )->name('password.update');
+        Route::get('logout' , [ProfileController::class ,'logout'] )->name('profile.logout');
         Route::get('/marketers/{marketer}/incomes' , [MarketerIncomeController::class  , 'index' ] )->name('marketers.incomes.index');
         Route::get('warehouses/{warehouse}/excel' , [WarehouseController::class , 'excel'] )->name('warehouse.excel');
 

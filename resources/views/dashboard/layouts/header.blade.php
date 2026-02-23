@@ -35,10 +35,8 @@
 				<div class="dropdown-menu dropdown-menu-right">
 					<a href="{{ route('dashboard.profile') }}" class="dropdown-item"><i class="icon-user-plus"></i>  الملف الشخصى </a>
 					<a href="{{ route('dashboard.password') }}" class="dropdown-item"><i class="icon-coins"></i> تعديل كلمه المرور </a>
-					<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> الرسائل <span class="badge badge-primary badge-pill ml-auto">58</span></a>
-					
-					
-					<a href="#" class="dropdown-item"><i class="icon-switch2"></i>  تسجيل الخروج </a>
+				
+					<a href="{{ route('dashboard.profile.logout') }}" class="dropdown-item"><i class="icon-switch2"></i>  تسجيل الخروج </a>
 				</div>
 			</li>
 		</ul>
