@@ -149,6 +149,25 @@ class ProductController extends Controller
             $product->images()->saveMany($images);
         }
 
+        foreach ($request->price as $key => $price) {
+            $product_country_price = ProductCountryPrice::where('product_id' , $product->id )
+            ->where('country_id' , $key )->first();
+
+            if ($product_country_price) {
+                $product_country_price->price = $price;
+                $product_country_price->price_after_discount = $request->price_after_discount[$key];
+                $product_country_price->save();
+            } else {
+                $product_country_price = new ProductCountryPrice;
+                $product_country_price->user_id = Auth::id();
+                $product_country_price->product_id = $product->id;
+                $product_country_price->country_id = $key;
+                $product_country_price->price = $price;
+                $product_country_price->price_after_discount = $request->price_after_discount[$key];
+                $product_country_price->save();
+            }
+        }
+
         return redirect()->back()->with('success' , trans('products.editing_success'));
 
     }

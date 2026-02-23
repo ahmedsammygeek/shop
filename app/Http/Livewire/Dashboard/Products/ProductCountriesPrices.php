@@ -6,6 +6,9 @@ use Livewire\Component;
 use App\Models\Country;
 class ProductCountriesPrices extends Component
 {
+
+    public $product;
+
     public function render()
     {
         $countries = Country::get();

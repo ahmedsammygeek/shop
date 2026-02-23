@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             @foreach ($countries as $country)
-            @livewire('dashboard.products.product-country-price' , ['product' => null , 'country' => $country , 'i' => $loop->index + 1 ] )
+            @livewire('dashboard.products.product-country-price' , ['product' => $product , 'country' => $country , 'i' => $loop->index + 1 ] )
             @endforeach
 
         </tbody>

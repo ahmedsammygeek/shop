@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
     {
         $id = Request::segment(4);
         return [
-            'barcode' => 'required|unique:products,barcode,'.$id,
+            'barcode' => 'required',
             'name.ar' => 'required', 
             'name.en' => 'required', 
             'category_id' => 'required' , 

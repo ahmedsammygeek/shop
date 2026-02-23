@@ -163,35 +163,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-4">
-								<div  class='mb-2' >
-									<label class="col-form-label"> سعر المنتج </label>
-									<input type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" >
-									@error('price')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
-							<div class="col-md-4">
-								<div  class='mb-2' >
-									<label class="col-form-label"> السعر بعد الخصم </label>
-									<input type="text" class="form-control @error('price_after_discount') is-invalid @enderror" name="price_after_discount" value="{{ $product->price_after_discount }}" >
-									@error('price_after_discount')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div  class='mb-2' >
-									<label class="col-form-label"> نسبه الخصم </label>
-									<input type="text" class="form-control @error('discount_percentage') is-invalid @enderror" name="discount_percentage" value="{{ $product->discount_percentage }}" >
-									@error('discount_percentage')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
+							@livewire('dashboard.products.product-countries-prices' , ['product' => $product] )
 
 
 							<div class="col-md-12">
@@ -206,6 +178,7 @@
 									@enderror
 								</div>
 							</div>
+
 
 
 							<div class="col-md-6">
