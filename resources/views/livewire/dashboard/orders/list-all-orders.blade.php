@@ -1,13 +1,13 @@
 <div>
- <div class="row">
+{{--  <div class="row">
     <div class="col-md-12">
         <a data-toggle="modal" data-target="#modal_form_vertical" class="btn btn-primary float-right "><i class="icon-plus3 mr-2 "></i> ارفاق ملف حاله الطلب </a>
     </div>
-</div>
+</div> --}}
 <hr>
 
 <div class="card">
-    <div class="card-header bg-primary text-white header-elements-sm-inline" >
+    <div class="card-header bg-dark text-white header-elements-sm-inline" >
         <h5 class="card-title"> عرض كافه الطلبات </h5>
         <div class="header-elements">
             <div class="d-flex justify-content-between">
@@ -50,18 +50,19 @@
                 </select>
             </div>
             <div class="col-md-2 ml-1" >
+                <select wire:model='country_id' class="form-control form-control-select2" >
+                    <option value=""> جميع الدول </option>
+                    @foreach ($this->countries as $country)
+                    <option value="{{ $country->id }}"> {{ $country->name }} </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-2 ml-1" >
                 <select wire:model='governorate_id' class="form-control form-control-select2" >
                     <option value=""> جميع المحافظات </option>
                     @foreach ($this->governorates as $governorate)
                     <option value="{{ $governorate->id }}"> {{ $governorate->name }} </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2 ml-1" >
-                <select wire:model='city_id' class="form-control form-control-select2" >
-                    <option value=""> جميع المدن </option>
-                    @foreach ($this->cities as $city)
-                    <option value="{{ $city->id }}"> {{ $city->name }} </option>
                     @endforeach
                 </select>
             </div>
@@ -80,12 +81,14 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-xs text-center">
             <thead>
                 <tr>
                     <th> # </th>
                     <th> رقم الطلب </th>
-                    <th> المسوق </th>
+                    <th> اسم العميل </th>
+                    <th> رقم الجوال </th>
+                    <th> رقم الواتس اب </th>
                     <th> قيمه الطلب </th>
                     <th> حاله الطلب </th>
                     <th> تاريخ الاستلام </th>
@@ -102,13 +105,16 @@
                 <tr>
                     <td> {{ $i++}} </td>
                     <td> {{ $order->number }} </td>
-                    <td> <a target="_blank" href="{{ route('dashboard.marketers.show'  , $order->user_id ) }}"> {{ $order->user?->name }} </a> </td>
-                    <td> {{ $order->total }} <span class='text-muted' > جنيه </span> </td>
+                    <td> {{ $order->first_name  }} {{ $order->last_name }} </td>
+                    <td> {{ $order->phone }} </td>
+                    <td> {{ $order->whats_up }} </td>
+
+                    <td> {{ $order->total }} <span class='text-muted' > {{ $order->country->currency }} </span> </td>
                     <td> 
                         {{ $order->status?->name }}                            
                     </td>
 
-                    <td> {{ $order->created_at->diffForHumans() }} </td>
+                    <td> {{ $order->created_at }}   <span class="text-muted"> {{ $order->created_at->diffForHumans() }} </span> </td>
                     <td>
                         <a href='{{ route('dashboard.orders.show' , ['order' => $order->id ] ) }}' class="btn btn-primary btn-icon"><i class="icon-eye "></i></a>
 

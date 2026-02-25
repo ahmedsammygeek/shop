@@ -17,7 +17,6 @@
 	<br>
 	<div class="col-md-12">
 		@include('dashboard.layouts.messages')
-		
 		@livewire('dashboard.orders.list-all-orders')
 	</div>
 </div>

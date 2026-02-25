@@ -3,15 +3,12 @@
 namespace App\Http\Livewire\Dashboard\Orders;
 
 use Livewire\Component;
-use App\Models\Order;
-use App\Models\City;
-use App\Models\Governorate;
-use Livewire\WithPagination;
-use App\Models\ShippingStatus;
+use App\Models\{Order , Country , Governorate , ShippingStatus };
 use App\Exports\Dashboard\Orders\OrdersExcelReportExport;
 use App\Imports\Dashboard\Orders\OrdersExcelReportImport;
 use Excel;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 class ListAllOrders extends Component
 {
     use WithPagination;
@@ -23,7 +20,7 @@ class ListAllOrders extends Component
     public $end_date;
     public $file;
     public $governorate_id;
-    public $city_id;
+    public $country_id;
 
     protected $listeners = ['deleteItem'];
 
@@ -48,9 +45,9 @@ class ListAllOrders extends Component
         return Governorate::all();
     }
 
-    public function getCitiesProperty()
+    public function getCountriesProperty()
     {
-        return City::where('governorate_id' , $this->governorate_id )->get();
+        return Country::get();
     }
 
     public function updatedRows()
@@ -89,8 +86,13 @@ class ListAllOrders extends Component
     public function render()
     {
         $shipping_statues = ShippingStatus::all();
-        $orders = Order::when($this->search , function($query){
-            $query->where('number' , 'LIKE' , '%'.$this->search.'%' )->orWhere('order_phone' ,  'LIKE' , '%'.$this->search.'%'  )->orWhere('client_name' ,  'LIKE' , '%'.$this->search.'%'  );
+        $orders = Order::with('country')
+        ->when($this->search , function($query){
+            $query->where('number' , 'LIKE' , '%'.$this->search.'%' )
+            ->orWhere('phone' ,  'LIKE' , '%'.$this->search.'%'  )
+            ->orWhere('whats_up' ,  'LIKE' , '%'.$this->search.'%'  )
+            ->orWhere('first_name' ,  'LIKE' , '%'.$this->search.'%'  )
+            ->orWhere('last_name' ,  'LIKE' , '%'.$this->search.'%'  );
         })
         ->when($this->shipping_status != 'all' , function($query){
             $query->where('shipping_statues_id' , $this->shipping_status );
@@ -101,8 +103,8 @@ class ListAllOrders extends Component
         ->when($this->end_date , function($query){
             $query->whereDate('created_at' , '<=' , $this->end_date );
         })
-        ->when($this->city_id , function($query){
-            $query->where('city_id' ,$this->city_id );
+        ->when($this->country_id , function($query){
+            $query->where('country_id' ,$this->country_id );
         })
         ->when($this->governorate_id , function($query){
             $query->where('governorate_id' ,$this->governorate_id );
