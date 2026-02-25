@@ -127,7 +127,6 @@ class ProductSelector extends Component
     {
         if (!$variateId) {
             $this->finalVariant = null;
-            $this->productPrice = $this->product->price ;
             return;
         }
         $this->finalVariant = Variation::find($variateId);
