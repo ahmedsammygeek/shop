@@ -241,10 +241,10 @@ class SiteController extends Controller
             $order_item->size = $item->attributes['size'];
             $order_item->color = $item->attributes['color'];
             $order_item->save();
-            // dispatch(new IncreasProductSalesCountJob($item->variation_id));
+            dispatch(new IncreasProductSalesCountJob($item->associatedModel['id']));
         }
-        // Cart::where('user_id' , Auth::id() )->delete();
-        // return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
+        \Cart::session($user_seesion_id)->clear();
+        return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
     }
 
     public function complains()
