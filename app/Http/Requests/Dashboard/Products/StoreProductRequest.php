@@ -24,11 +24,9 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'barcode' => 'required',
             'name.ar' => 'required', 
             'name.en' => 'required', 
             'category_id' => 'required' , 
-            'brand_id' => 'nullable' , 
             'description.ar' => 'nullable' ,  
             'description.en' => 'nullable' ,  
             'min_description.ar' => 'nullable' , 

@@ -17,7 +17,6 @@ class ProductSelector extends Component
     public $productPrice;
     public $productPriceAfterDiscount;
     public $hasVariant = false;
-    public $isInMyWishList = false;
     public $quantity = 1;
     protected $listeners = ['finalVariantChoosed'];
     public function mount()
@@ -27,17 +26,13 @@ class ProductSelector extends Component
         ->where('country_id' , $country_id)
         ->first();
 
-        $productPrice = $product_country_price->price;
-        $productPriceAfterDiscount = $product_country_price->price_after_discount;
 
-
-        if ($product_country_price) {
-            $this->product->price =  $product_country_price->price;
-            $this->product->price_after_discount =  $product_country_price->price_after_discount;
-        } else {
+        if (!$product_country_price) {
             return redirect(route('site.index'));
-        }
+        } 
 
+        $this->productPrice = $product_country_price->price;
+        $this->productPriceAfterDiscount = $product_country_price->price_after_discount;
 
 
 
@@ -51,13 +46,6 @@ class ProductSelector extends Component
             $this->hasVariant = false;
             $one_size_variation = $this->product->variations->first();
             $this->finalVariantChoosed($one_size_variation->id);
-        }
-
-        if (Auth::check()) {
-            $this->isInMyWishList = Wishlist::where([
-                ['user_id' , '=' , Auth::id() ] , 
-                ['product_id' , '=' , $this->product->id  ]
-            ])->first() ? true : false;
         }
     }
 
@@ -142,32 +130,7 @@ class ProductSelector extends Component
             $this->productPrice = $this->product->price ;
             return;
         }
-
         $this->finalVariant = Variation::find($variateId);
-        $this->productPrice = $this->finalVariant?->price ? $this->finalVariant?->price : $this->product->price ;
-    }
-    public function add_to_wishlist() {
-        if (!Auth::check()) {
-            $this->alert('error', 'يجب ان تكون عضوا لكى تضيف منتج الى السله');
-
-        } else {
-            $Wishlist = Wishlist::where([
-                ['product_id' , '=' , $this->product->id ] , 
-                ['user_id' , '=' , Auth::id() ] , 
-            ])->first();
-            if ($Wishlist) {
-                $Wishlist->delete();
-                $this->isInMyWishList = false;
-                $this->alert('success', 'تم حذف المنتج من قائمه الامنيات');
-            } else {
-                $Wishlist = new Wishlist;
-                $Wishlist->product_id = $this->product->id;
-                $Wishlist->user_id = Auth::id();
-                $Wishlist->save();
-                $this->isInMyWishList = true;
-                $this->alert( 'success' ,  'تم إضافه المنتج الى قائمه الامنيات');
-            }
-        }
     }
 
     public function render()

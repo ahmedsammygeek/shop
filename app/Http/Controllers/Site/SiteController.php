@@ -44,6 +44,7 @@ class SiteController extends Controller
         $latest_products = $latest_products->map(function($latest_product){
             $country_id = Session::get('user_country');
             $latest_product->price =  $latest_product->prices->where('country_id' , $country_id)->first()?->price ;
+            $latest_product->price_after_discount =  $latest_product->prices->where('country_id' , $country_id)->first()?->price_after_discount ;
             return $latest_product;
         });
 
@@ -51,6 +52,7 @@ class SiteController extends Controller
         $best_selling_products = $best_selling_products->map(function($best_selling_product){
             $country_id = Session::get('user_country');
             $best_selling_product->price =  $best_selling_product->prices->where('country_id'  , $country_id)->first()?->price ;
+            $best_selling_product->price_after_discount =  $best_selling_product->prices->where('country_id'  , $country_id)->first()?->price_after_discount ;
             return $best_selling_product;
         });
 
@@ -59,6 +61,7 @@ class SiteController extends Controller
             $home_category->products->map(function($product){
                 $country_id = Session::get('user_country');
                 $product->price =  $product->prices->where('country_id'  , $country_id)->first()?->price ;
+                $product->price_after_discount =  $product->prices->where('country_id'  , $country_id)->first()?->price_after_discount ;
                 return $product;
             });
 
@@ -88,6 +91,21 @@ class SiteController extends Controller
         dispatch(new IncreasProductViewsCountJob($product));
         $similar_products = Product::where('category_id' , $product->category_id )->inRandomOrder()->take(3)->get();
         $best_selling_products = Product::orderBy('sales_count' , 'DESC' )->take(6)->get();
+
+
+        $similar_products = $similar_products->map(function($similar_product){
+            $country_id = Session::get('user_country');
+            $similar_product->price =  $similar_product->prices->where('country_id'  , $country_id)->first()?->price ;
+            $similar_product->price_after_discount =  $similar_product->prices->where('country_id'  , $country_id)->first()?->price_after_discount ;
+            return $similar_product;
+        });
+
+        $best_selling_products = $best_selling_products->map(function($best_selling_product){
+            $country_id = Session::get('user_country');
+            $best_selling_product->price =  $best_selling_product->prices->where('country_id'  , $country_id)->first()?->price ;
+            $best_selling_product->price_after_discount =  $best_selling_product->prices->where('country_id'  , $country_id)->first()?->price_after_discount ;
+            return $best_selling_product;
+        });
         return view('site.product' , compact('product' , 'similar_products' , 'best_selling_products'));
     }
 
@@ -270,13 +288,13 @@ class SiteController extends Controller
         $zip_file =  Zip::create( $product->name.'-images.zip');
         $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product->image, $product->image );
         foreach ($product->images as $product_image) {
-         $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product_image->image, $product_image->image );
-     }
-     return $zip_file;
- }
+           $zip_file->add("s3://alaa-eldeen-s3-bucket/products/".$product_image->image, $product_image->image );
+       }
+       return $zip_file;
+   }
 
- public function phone()
- {
+   public function phone()
+   {
     return view('site.phone');
 }
 

@@ -41,6 +41,7 @@ class ProductController extends Controller
     // StoreProductRequest
     public function store(StoreProductRequest $request)
     {
+        // dd($request->all());
         $product = new Product;
 
         if(!$product->add($request->all()))
@@ -62,7 +63,7 @@ class ProductController extends Controller
         }
 
 
-        foreach ($request->price as $key => $price) {
+        foreach ($request->country_price as $key => $price) {
             $product_country_price = new ProductCountryPrice;
             $product_country_price->user_id = Auth::id();
             $product_country_price->product_id = $product->id;
@@ -72,8 +73,30 @@ class ProductController extends Controller
             $product_country_price->save();
         }
 
-
-        if ($request->has('add')) {
+        if ($request->filled('types')) {
+            for ($i=0; $i <count($request->types) ; $i++) { 
+                $new_product_variat = new Variation;
+                $new_product_variat->product_id = $product->id;
+                $new_product_variat->title = $request->name[$i];
+                $new_product_variat->type = $request->types[$i] ;
+                $new_product_variat->user_id = Auth::id();
+                $new_product_variat->barcode = time().mt_rand(1 , 9000);
+                $new_product_variat->save();
+                if ($request->color_names) {
+                    for ($r=0; $r <count($request->color_names[$i]) ; $r++) { 
+                        $product_sub_variat = new Variation;
+                        $product_sub_variat->product_id = $product->id;
+                        $product_sub_variat->parent_id = $new_product_variat->id;
+                        $product_sub_variat->title = $request->color_names[$i][$r];
+                        $product_sub_variat->color = $request->colors[$i][$r];
+                        $product_sub_variat->type = 'color';
+                        $product_sub_variat->barcode = time().mt_rand(1 , 9000);
+                        $product_sub_variat->user_id = Auth::id();
+                        $product_sub_variat->save();
+                    }
+                }
+            }
+        } else {
             $variation = new Variation;
             $variation->product_id = $product->id;
             $variation->user_id = Auth::id();
@@ -83,13 +106,8 @@ class ProductController extends Controller
             $variation->save();
         }
 
-        if ($request->has('add')) {
-            return redirect(route('dashboard.products.index'))->with('success' , trans('products.adding_success'));
-        } else {
-            return redirect(route('dashboard.products.variations.create' , $product ))->with('success' , trans('products.adding_success'));
-        }
 
-
+        return redirect(route('dashboard.products.index'))->with('success' , trans('products.adding_success'));
     }
 
     /**

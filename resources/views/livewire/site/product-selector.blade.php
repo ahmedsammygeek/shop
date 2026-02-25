@@ -39,17 +39,7 @@
             <a wire:click='add_to_cart()' href='#' class="btn btn-primary"> 
                 <i class="fas fa-shopping-cart"></i> <span class="text"> اضف الى السله </span> 
             </a>
-            @endif
-
-            @if ($isInMyWishList)
-            <a href="#" wire:click='add_to_wishlist({{ $product->id }})' class="btn btn-light">
-                <i class="fas fa-trash"></i> <span class="text"> حذف من قائمه الامنيات </span> 
-            </a>
-            @else
-            <a href="#" wire:click='add_to_wishlist({{ $product->id }})' class="btn btn-light">
-                <i class="fas fa-heart"></i> <span class="text"> إضف الى قائمه الامنيات </span> 
-            </a>
-            @endif
+            @endif      
         </div> 
     </div> 
 </div>

@@ -34,25 +34,8 @@
 					<div class="tab-content">
 						<div class="tab-pane fade show active" id="solid-justified-tab1">
 							<fieldset class="mb-3">
+								<legend> بيانات المنتج الاساسيه </legend>
 								<div class="form-group row">
-									<div class="col-md-6">
-										<div  class='mb-2' >
-											<label class="col-form-label"> @lang('products.image') </label>
-											<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
-											@error('image')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div  class='mb-2' >
-											<label class="col-form-label"> @lang('products.images') </label>
-											<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
-											@error('images')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
 									<div class="col-md-6">
 										<div  class='mb-2' >
 											<label class="col-form-label"> اسم المنتج بالعربيه </label>
@@ -71,6 +54,7 @@
 											@enderror
 										</div>
 									</div>
+
 									<div class="col-md-4">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.category') </label>
@@ -85,34 +69,26 @@
 											@enderror
 										</div>
 									</div>
+
+
 									<div class="col-md-4">
 										<div  class='mb-2' >
-											<label class="col-form-label"> @lang('products.brand') </label>
-											<select name="brand_id" id="select5" class="form-control " >
-												<option value=""></option>
-												@foreach ($brands as $brand)
-												<option value="{{ $brand->id }}">{{ $brand->name }}</option>
-												@endforeach
-											</select>
-											@error('brand_id')
+											<label class="col-form-label"> @lang('products.image') </label>
+											<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
+											@error('image')
 											<p  class='text-danger' >  {{ $message }} </p>
 											@enderror
 										</div>
 									</div>
-
 									<div class="col-md-4">
 										<div  class='mb-2' >
-											<label class="col-form-label"> البارد كود </label>
-											<input type="text" name="barcode" class="form-control @error('barcode') is-invalid @enderror " >
-											@error('barcode')
+											<label class="col-form-label"> @lang('products.images') </label>
+											<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
+											@error('images')
 											<p  class='text-danger' >  {{ $message }} </p>
 											@enderror
 										</div>
 									</div>
-	
-		
-
-
 									<div class="col-md-6">
 										<div  class='mb-2' >
 											<label class="col-form-label">وصف بسيط للمنتج بالعربيه</label>
@@ -154,40 +130,21 @@
 									</div>
 
 
-{{-- 									<div class="col-md-4">
-										<div  class='mb-2' >
-											<label class="col-form-label"> سعر المنتج </label>
-											<input type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" >
-											@error('price')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div  class='mb-2' >
-											<label class="col-form-label"> السعر بعد الخصم </label>
-											<input type="text" class="form-control @error('price_after_discount') is-invalid @enderror" name="price_after_discount" value="{{ old('price_after_discount') }}" >
-											@error('price_after_discount')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div  class='mb-2' >
-											<label class="col-form-label"> نسبه الخصم </label>
-											<input type="text" class="form-control @error('discount_percentage') is-invalid @enderror" name="discount_percentage" value="{{ old('discount_percentage') }}" >
-											@error('discount_percentage')
-											<p  class='text-danger' >  {{ $message }} </p>
-											@enderror
-										</div>
-									</div> --}}
+
 								</div>			
 							</fieldset>
 
 							<fieldset>
+								<legend> اسعار المنتج </legend>
 								<div class="row">
 									@livewire('dashboard.products.product-countries-prices')
 								</div>
+							</fieldset>
+							<fieldset>
+								<legend> المقاسات & الالوان </legend>
+								
+									@include('dashboard.variations.create')
+							
 							</fieldset>
 						</div>
 					</div>
@@ -196,7 +153,7 @@
 				<div class="card-footer bg-white ">
 					<a href="{{ route('dashboard.products.index') }}" class="btn btn-outline-primary w-100 w-sm-auto"> @lang('dashboard.cancel') </a>
 					<button type="submit" name='add' class="btn btn-primary mr-2 mt-sm-0 w-100 w-sm-auto" style="float: left;"> @lang('dashboard.add') </button>
-					<button type="submit" name='add_variations' class="btn btn-primary mr-2 mt-sm-0 w-100 w-sm-auto" style="float: left;"> حفظ و إضافه متغيرات </button>
+					{{-- <button type="submit" name='add_variations' class="btn btn-primary mr-2 mt-sm-0 w-100 w-sm-auto" style="float: left;"> حفظ و إضافه متغيرات </button> --}}
 				</div>
 			</form>
 		</div>

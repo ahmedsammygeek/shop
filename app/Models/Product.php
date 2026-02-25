@@ -49,8 +49,6 @@ class Product extends Model
         $this->setTranslation('description' , 'ar' , $data['description']['ar']);
         $this->setTranslation('description' , 'en' , $data['description']['en']);
         $this->category_id = $data['category_id'];
-        $this->brand_id = $data['brand_id'];
-        $this->barcode = $data['barcode'];
 
         $this->user_id = Auth::id();
         return $this->save();
@@ -64,8 +62,6 @@ class Product extends Model
         $this->setTranslation('mini_description' , 'en' , $data['mini_description']['en']);
         $this->setTranslation('description' , 'ar' , $data['description']['ar']);
         $this->setTranslation('description' , 'en' , $data['description']['en']);
-        $this->category_id = $data['category_id'];
-        $this->brand_id = $data['brand_id'];
         $this->active = isset($data['active']) ? 1 : 0;
         $this->barcode = $data['barcode'];
 

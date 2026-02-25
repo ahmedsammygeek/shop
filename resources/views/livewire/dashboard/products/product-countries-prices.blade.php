@@ -1,5 +1,5 @@
 <div class="col-md-12 text-center">
-    <table class="table table-bordered table-condensed">
+    <table class="table table-bordered table-condensed table-xs">
         <thead>
             <tr>
                 <th> # </th>

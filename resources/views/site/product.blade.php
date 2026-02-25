@@ -75,7 +75,7 @@
             </a>
             <figcaption class="info">
               <a href="{{ $similar_product->url() }}" class="title">{{ $similar_product->name }}</a>
-              <span class="text-muted">{{ $similar_product->price }} جنيه</span>
+              <span class="text-muted">{{ $similar_product->price }}  {{ Session::get('currency') }} </span>
               <div class="rating-wrap">
                 <ul class="rating-stars">
                   <li class="stars-active" style="width:80%;">
@@ -85,7 +85,7 @@
                     <img src="{{ Storage::url('site_assets/images/misc/starts-disable.svg') }}" alt="">
                   </li>
                 </ul>
-                <span class="label-rating text-warning">4.5</span>
+                <span class="label-rating text-warning">5.0</span>
               </div> <!-- rating-wrap.// -->
             </figcaption>
           </figure>
@@ -140,7 +140,9 @@
 
 
             <div class="list-left">
-              <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> {{ $best_selling_product->price }} ج.م</h6>
+              <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> 
+                {{ $best_selling_product->price }} {{ Session::get('currency') }}
+              </h6>
             </div>
 
             <div class="item-footer">

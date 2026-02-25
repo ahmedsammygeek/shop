@@ -1,128 +1,55 @@
-@extends('dashboard.layouts.master')
+<fieldset class="mb-3">
+	<div>
+		<button class='btn btn-success add_new_row '> إضافه جديد  </button>
+	</div>
 
-@section('page_title')
-{{ trans('products.add_new_product') }}
-@endsection
+	<div class="main_rows">
 
-@section('page_header')
-<a href="{{ route('dashboard.products.index') }}" class="breadcrumb-item"><i class="icon-ampersand  mr-2"></i> @lang('products.products')</a>
-<span class="breadcrumb-item active"> @lang('products.add_new_product') </span>
-@endsection
+		<div class="row main_row" data-row_number='0' >
 
-@section('page_content')
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="card">
-			
-			<div class="card-header bg-primary text-white header-elements-sm-inline" >
-				<h5 class="card-title"> @lang('products.add_new_product') </h5>
-				<div class="header-elements">
-					<div class="d-flex justify-content-between">
-						<div class="list-icons ml-3">
-							<a class="list-icons-item" data-action="collapse"></a>
-							<a class="list-icons-item" data-action="reload"></a>
-							<a class="list-icons-item" data-action="remove"></a>
-						</div>
-					</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-form-label"> النوع </label>
+					<select name="types[]" class='select form-control' id="">
+						<option value="one_size"> بدون </option>
+						<option value="size"> مقاس </option>
+					</select>
+					@error('types.*')
+					<p class='text-danger' >  {{ $message }} </p>
+					@enderror
 				</div>
 			</div>
-			<form action="{{ route('dashboard.products.variations.store' , $product ) }}" method='POST' enctype="multipart/form-data" > 
-				@csrf
-				<div class="card-body">
 
-					<div class="tab-content">
-						<div class="tab-pane fade show active" id="solid-justified-tab1">
-							<fieldset class="mb-3">
-								<div>
-									<button class='btn btn-success add_new_row '> إضافه جديد  </button>
-								</div>
-
-								<div class="main_rows">
-
-									<div class="row main_row" data-row_number='0' >
-
-										<div class="col-md-2">
-											<div class="form-group">
-												<label class="col-form-label"> النوع </label>
-												<select name="types[]" class='select form-control' id="">
-													<option value="one_size"> بدون </option>
-													<option value="size"> مقاس </option>
-													<option value="weight"> وزن </option>
-													<option value="volume"> حجم </option>
-
-												</select>
-												@error('types.*')
-												<p class='text-danger' >  {{ $message }} </p>
-												@enderror
-											</div>
-										</div>
-
-										<div class="col-md-2">
-											<div class="form-group">
-												<label class="col-form-label"> الاسم </label>
-												<input type="text" class="form-control @error('name.*') is-invalid @enderror" name="name[]" value="{{ old('name.*') }}" >
-												@error('name.*')
-												<p  class='text-danger' >  {{ $message }} </p>
-												@enderror
-											</div>
-										</div>
-
-										<div class="col-md-2">
-											<div class="form-group">
-												<label class="col-form-label"> الباركود </label>
-												<input type="text" class="form-control @error('barcode.*') is-invalid @enderror" name="barcode[]" value="{{ old('barcode.*') }}" >
-												@error('barcode.*')
-												<p  class='text-danger' >  {{ $message }} </p>
-												@enderror
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label class="col-form-label"> السعر </label>
-												<input type="text" class="form-control @error('price.*') is-invalid @enderror" name="price[]" value="{{ old('price.*') }}" >
-												@error('price.*')
-												<p  class='text-danger' >  {{ $message }} </p>
-												@enderror
-											</div>
-										</div>
-
-
-										<div class="col-md-2">
-											<div class="form-group">
-												<label class="col-form-label"> خصائص </label> <br>
-												<button title='الغاء' class="btn btn-outline-danger delete_main_row  border-2 ml-2"><i class="icon-trash"></i></button>
-												<button title='إضافه لون'  class="add_color	 btn btn-outline-success border-2 ml-2"><i class="icon-plus3"></i> اضف لون </button>
-											</div>										
-										</div>
-
-										<div class="child-row col-md-12"  >
-											<ul class='' >
-												
-											</ul>
-										</div>
-
-									</div>
-
-
-									
-								</div>
-								
-							</fieldset>
-						</div>
-					</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-form-label"> الاسم </label>
+					<input type="text" class="form-control @error('name.*') is-invalid @enderror" name="name[]" value="{{ old('name.*') }}" >
+					@error('name.*')
+					<p  class='text-danger' >  {{ $message }} </p>
+					@enderror
 				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="col-form-label"> خصائص </label> <br>
+					<button title='الغاء' class="btn btn-outline-danger delete_main_row  border-2 ml-2"><i class="icon-trash"></i></button>
+					<button title='إضافه لون'  class="add_color	 btn btn-outline-success border-2 ml-2"><i class="icon-plus3"></i> اضف لون </button>
+				</div>										
+			</div>
 
-				<div class="card-footer bg-white d-sm-flex justify-content-sm-between align-items-sm-center py-sm-2">
-					<a href="{{ route('dashboard.products.index') }}" class="btn btn-outline-primary w-100 w-sm-auto"> @lang('dashboard.cancel') </a>
-					<button type="submit" class="btn btn-primary mt-3 mt-sm-0 w-100 w-sm-auto"> @lang('dashboard.add') </button>
-				</div>
-			</form>
+			<div class="child-row col-md-12"  >
+				<ul class='' >
+					
+				</ul>
+			</div>
+
 		</div>
-	</div>
-</div>
 
-@endsection
+
+		
+	</div>
+	
+</fieldset>
 
 @section('scripts')
 
