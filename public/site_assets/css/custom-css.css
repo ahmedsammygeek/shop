@@ -32,31 +32,33 @@ select.search-input:focus {
     outline: none !important;
 }  
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 .fixed-select-container {
     position: fixed;
-    top: 90%;
-    left: 10%;
-    transform: translateX(-50%);
+    bottom: 20px;
+    left: 20px;
+    top: auto;
+    transform: none;
     background: white;
-    padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 25px);
+    padding: 12px 20px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     z-index: 9999;
-
-    max-width: 200px;
-    min-width: auto; /* Remove min-width restriction */
+    width: clamp(180px, 30vw, 320px);
     text-align: center;
     direction: rtl;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
-/* Style the select */
 .fixed-select {
     width: 100%;
-    padding: clamp(10px, 2vh, 12px) clamp(15px, 3vw, 25px);
-    font-size: clamp(14px, 4vw, 16px);
+    padding: 10px 15px 10px 40px;
+    font-size: clamp(13px, 2vw, 16px);
     border: 2px solid #e0e0e0;
-    border-radius: max(25px, 4vw);
+    border-radius: 25px;
     background: white;
     cursor: pointer;
     outline: none;
@@ -66,9 +68,10 @@ select.search-input:focus {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
-    background-position: left 15px center;
+    background-position: left 12px center;
     background-size: 16px;
-    padding-left: 45px; /* Space for custom arrow */
+    direction: rtl;
+    text-align: right;
 }
 
 .fixed-select:hover {
@@ -100,102 +103,62 @@ select.search-input:focus {
     word-break: break-word;
 }
 
-/* Tablet Styles */
+/* Tablet */
 @media screen and (max-width: 768px) {
-    body {
-        padding-top: 90px;
-    }
-
     .fixed-select-container {
-        width: 95%;
-        top: 10px;
-    }
-
-    .fixed-select {
-        font-size: 15px;
-        background-size: 14px;
-        padding-left: 40px;
+        width: 200px;
+        bottom: 15px;
+        left: 15px;
     }
 }
 
-/* Mobile Styles */
+/* Mobile */
 @media screen and (max-width: 480px) {
-    body {
-        padding-top: 80px;
-    }
-
     .fixed-select-container {
-        width: 92%;
-        padding: 10px;
-        top: 8px;
-    }
-
-    .fixed-select {
-        font-size: 14px;
-        padding: 10px 15px;
-        padding-left: 35px;
-        background-position: left 10px center;
-        background-size: 12px;
-    }
-
-    h1 {
-        font-size: 20px;
+        width: calc(100% - 30px);
+        bottom: 10px;
+        left: 15px;
+        padding: 10px 12px;
+        border-radius: 10px;
     }
 }
 
-/* Small Mobile Styles */
+/* Small Mobile */
 @media screen and (max-width: 320px) {
-    body {
-        padding-top: 70px;
-    }
-
     .fixed-select-container {
-        width: 95%;
-        padding: 8px;
-    }
-
-    .fixed-select {
-        font-size: 13px;
-        padding: 8px 12px;
-        padding-left: 30px;
+        width: calc(100% - 20px);
+        bottom: 8px;
+        left: 10px;
+        padding: 8px 10px;
     }
 }
 
-/* Landscape Mode */
+/* Landscape */
 @media screen and (max-height: 480px) and (orientation: landscape) {
     .fixed-select-container {
-        top: 5px;
-        padding: 8px 15px;
-    }
-
-    body {
-        padding-top: 65px;
+        bottom: 8px;
+        left: 10px;
+        padding: 6px 12px;
+        width: 220px;
     }
 }
 
-/* High-resolution screens */
+/* Large screens */
 @media screen and (min-width: 1200px) {
     .fixed-select-container {
-        max-width: 500px;
+        width: 350px;
     }
 
     .fixed-select {
-        font-size: 18px;
-        padding: 15px 30px;
-        padding-left: 50px;
+        font-size: 16px;
+        padding: 12px 20px 12px 45px;
     }
 }
 
-/* Optional: Bottom version for mobile */
-.fixed-select-container.bottom-version {
-    top: auto;
-    bottom: clamp(10px, 3vh, 20px);
-}
-
-/* Touch-friendly improvements */
+/* Touch devices */
 @media (hover: none) and (pointer: coarse) {
     .fixed-select {
-        min-height: 44px; /* Apple's recommended touch target size */
+        min-height: 44px;
     }
 
     .fixed-select-container {

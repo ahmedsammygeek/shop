@@ -91,6 +91,8 @@ if ($lang == 'ar') {
             @endforeach
         </select>
     </form>
+
+    
     @include('site.layouts.header')
 
     @yield('page_content')
