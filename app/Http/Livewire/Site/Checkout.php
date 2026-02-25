@@ -42,12 +42,10 @@ class Checkout extends Component
 
     public function getSubTotalProperty()
     {
-        return 900;
-        
+        $user_seesion_id = session()->getId();
+        $items =  \Cart::session($user_seesion_id)->getContent();
         $total = 0;
-        $items = Cart::where('user_id' , Auth::id() )->get();
         foreach ($items as $item) {
-            
             $total += $item->quantity * $item->price;
         }
         return $total;

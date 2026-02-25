@@ -59,7 +59,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="widgets-wrap float-md-right">
 
-                        @if (!Auth::check())
+{{--                         @if (!Auth::check())
                         <div class="widget-header mr-3">
                             <a href="{{ route('login') }}" class="widget-view">
                                 <div class="icon-area">
@@ -89,7 +89,7 @@
                                 <small class="text"> @lang('site.account') </small>
                             </a>
                         </div>
-                        @endif
+                        @endif --}}
 
                         <div class="widget-header">
                             <a href="{{ route('cart') }}" class="widget-view">
