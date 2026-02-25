@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Site;
 
 use Livewire\Component;
-use App\Models\Variation;
-use App\Models\Wishlist;
+use App\Models\{Variation , Product , ProductCountryPrice };
+
 use Auth;
-use App\Models\Cart;
+use Session;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 class ProductSelector extends Component
 {
@@ -15,17 +15,36 @@ class ProductSelector extends Component
     public $initialVariation;
     public $finalVariant;
     public $productPrice;
+    public $productPriceAfterDiscount;
     public $hasVariant = false;
     public $isInMyWishList = false;
     public $quantity = 1;
     protected $listeners = ['finalVariantChoosed'];
     public function mount()
     {
+        $country_id = Session::get('user_country');
+        $product_country_price = ProductCountryPrice::where('product_id' , $this->product->id )
+        ->where('country_id' , $country_id)
+        ->first();
+
+        $productPrice = $product_country_price->price;
+        $productPriceAfterDiscount = $product_country_price->price_after_discount;
+
+
+        if ($product_country_price) {
+            $this->product->price =  $product_country_price->price;
+            $this->product->price_after_discount =  $product_country_price->price_after_discount;
+        } else {
+            return redirect(route('site.index'));
+        }
+
+
+
+
         $this->initialVariation = $this->product->variations->where('type' , '!=' , 'one_size' )
         ->sortBy('order')
         ->groupBy('type')
         ->first();
-        $this->productPrice = $this->product->price;
         if ($this->initialVariation) {
             $this->hasVariant = true;
         } else {
@@ -57,37 +76,63 @@ class ProductSelector extends Component
     }
 
 
+    public function getProductPrice()
+    {
+        if ($this->hasDiscount()) {
+            return $this->productPriceAfterDiscount;
+        }
+        return $this->productPrice;
+    }
+
+
+    public function hasDiscount()
+    {
+        if ($this->productPriceAfterDiscount) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function add_to_cart()
     {
-        if (!Auth::check()) {
-            $this->alert('info' , 'يجب ان تكون مستخدم لكى تستطيع الإضافه الى سله التسوق', [
-                'toast' => false  , 
-                'position' => 'center' , 
-                'timer' => 3000 , 
-            ]);
+        $user_seesion_id = session()->getId();
 
-            return ;
+        if ($this->finalVariant->type  == 'size') {
+            $size = $this->finalVariant->title;
+            $color = null;
+        } else if ($this->finalVariant->type  == 'color') {
+            $color_variation =  $this->finalVariant;
+            $size_variaton = Variation::where('id' , $this->finalVariant->parent_id )->first();
+            $size = $size_variaton->title;
+            $color = $color_variation->title;
+        } else {
+            $size = null;
+            $color = null;
         }
 
-        // we need to check first if this item in cart or not
-        $cart_item = Cart::where([
-            ['variation_id' , '=' , $this->finalVariant->id ] , 
-            ['user_id' , '=' , Auth::id() ] , 
-        ])->first();
+        $cart = \Cart::session($user_seesion_id);
 
-        if ($cart_item) {
-            $cart_item->quantity = $cart_item->quantity + $this->quantity;
-            $cart_item->save();
+        $cartItem = $cart->get($this->finalVariant->id);
+
+        if ($cartItem) {
+            $cart->update($this->finalVariant->id, [
+                'quantity' => +1
+            ]);
         } else {
-            $cart = new Cart;
-            $cart->variation_id = $this->finalVariant->id;
-            $cart->quantity = $this->quantity;
-            $cart->user_id = Auth::id();
-            $cart->price = $this->finalVariant->product?->getPrice();
-            $cart->save();
+            \Cart::session($user_seesion_id)->add(array(
+                'id' => $this->finalVariant->id ,
+                'name' => $this->finalVariant->product?->name,
+                'price' => $this->getProductPrice(),
+                'quantity' => 1,
+                'attributes' => [
+                    'size' => $size , 
+                    'color' => $color, 
+                ],
+                'associatedModel' => $this->product
+            ));
         }
         $this->alert( 'success' ,  'تم إضافه المنتج '.$this->finalVariant?->product->name.' الى السله بنجاح' );
-
     }
 
     public function finalVariantChoosed($variateId)

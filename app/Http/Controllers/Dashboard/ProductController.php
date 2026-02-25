@@ -41,11 +41,7 @@ class ProductController extends Controller
     // StoreProductRequest
     public function store(StoreProductRequest $request)
     {
-
-
-        // dd($request->all());
         $product = new Product;
-
 
         if(!$product->add($request->all()))
             return redirect()->back()->with('error' , trans('products.adding_error'));

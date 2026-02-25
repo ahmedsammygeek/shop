@@ -3,15 +3,19 @@
 namespace App\Http\Livewire\Site;
 
 use Livewire\Component;
-use App\Models\Governorate;
-use App\Models\City;
-use App\Models\Cart;
+use App\Models\{Governorate , Country , City };
 use Auth;
 class Checkout extends Component
 {
 
     public $governorate_id;
     public $city_id;
+    public $country_id;
+
+    public function getCountriesProperty()
+    {
+        return Country::all();
+    }
 
     public function getGovernoratesProperty()
     {
@@ -38,6 +42,8 @@ class Checkout extends Component
 
     public function getSubTotalProperty()
     {
+        return 900;
+        
         $total = 0;
         $items = Cart::where('user_id' , Auth::id() )->get();
         foreach ($items as $item) {
@@ -45,6 +51,7 @@ class Checkout extends Component
             $total += $item->quantity * $item->price;
         }
         return $total;
+
     }
 
 
@@ -57,7 +64,8 @@ class Checkout extends Component
 
     public function render()
     {
-        $items = Cart::where('user_id' , Auth::id() )->get();
+        $user_seesion_id = session()->getId();
+        $items = \Cart::session($user_seesion_id)->getContent();
         $total = 0;
         foreach ($items as $item) {
             $total += ($item->quantity * $item->product?->price );

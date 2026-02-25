@@ -5,10 +5,9 @@
         <thead class="text-muted">
           <tr class="small text-uppercase">
             <th scope="col">المنتج</th>
-            <th scope="col" width="150">السعر المنتج الاصلى </th>
-            <th scope="col" width="150">سعر البيع للعميل</th>
+            <th scope="col" width="150"> سعر المنتج </th>
             <th scope="col" width="120">الكميه</th>
-            <th scope="col" width="120">ربحك</th>
+            <th scope="col" width="120"> المبلغ الكلى </th>
             <th scope="col" class="text-right" width="200"> </th>
           </tr>
         </thead>

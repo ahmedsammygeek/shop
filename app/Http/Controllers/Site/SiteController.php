@@ -196,47 +196,55 @@ class SiteController extends Controller
         return view('site.checkout');
     }
 
-
-    public function save_order(SoreOrderRequest $request)
+    // SoreOrderRequest
+    public function save_order(Request $request)
     {
+
+        // dd('fdfd');
+        $user_seesion_id = session()->getId();
         $sub_total = 0;
         $total = 0;
-        $items = Cart::where('user_id' , Auth::id() )->get();
+        $items = \Cart::session($user_seesion_id)->getContent();
         foreach ($items as $item) {
             $sub_total += ($item->quantity * $item->price );
         }
         // calculate the shipping cost
         $city = City::find($request->city);
         $governorate = Governorate::find($request->governorate_id);
-        $shipping_cost = $city->shipping_cost ? $city->shipping_cost : $governorate->shipping_cost;
+        // $shipping_cost = $city->shipping_cost ? $city->shipping_cost : $governorate->shipping_cost;
+        $shipping_cost = 50;
 
         $order = new Order;
         $order->number = time().mt_rand(1 , 1000).Auth::id();
         $order->total = $total;
-        $order->user_id = Auth::id();
         $order->subtotal = $sub_total;
         $order->shipping_cost = $shipping_cost;
         $order->total = $shipping_cost + $sub_total ;
         $order->discount = 0;
         $order->governorate_id = $request->governorate_id;
-        $order->city_id = $request->city;
+        $order->city = $request->city;
+        $order->country_id = $request->country_id;
         $order->address = $request->address;
         $order->shipping_statues_id = 1;
-        $order->order_phone = $request->phone;
-        $order->client_name = $request->client_name;
+        $order->phone = $request->phone;
+        $order->whats_up = $request->whats_up;
+        $order->first_name = $request->first_name;
+        $order->last_name = $request->last_name;
         $order->save();
 
         foreach ($items as $item) {
             $order_item = new OrderItem;
             $order_item->order_id = $order->id;
-            $order_item->variation_id = $item->variation_id;
+            $order_item->product_id = $item->associatedModel['id'];
             $order_item->price = $item->price;
             $order_item->quantity = $item->quantity;
+            $order_item->size = $item->attributes['size'];
+            $order_item->color = $item->attributes['color'];
             $order_item->save();
-            dispatch(new IncreasProductSalesCountJob($item->variation_id));
+            // dispatch(new IncreasProductSalesCountJob($item->variation_id));
         }
-        Cart::where('user_id' , Auth::id() )->delete();
-        return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
+        // Cart::where('user_id' , Auth::id() )->delete();
+        // return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
     }
 
     public function complains()

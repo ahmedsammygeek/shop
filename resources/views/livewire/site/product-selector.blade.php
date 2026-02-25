@@ -1,10 +1,10 @@
 <div>
     <div class="mb-3"> 
-        @if ($product->hasDiscount())
-        <var class=" h4"> سعر المنتج : {{ $product->price_after_discount }} جنيه  </var> 
-        <span class="text-muted old-price"> <del>{{ $product->price }}</del> جنيه</span> 
+        @if ($this->hasDiscount())
+        <var class=" h4"> سعر المنتج : {{ $productPriceAfterDiscount }} جنيه  </var> 
+        <span class="text-muted old-price"> <del>{{ $product->price }}</del> {{ Session::get('currency') }} </span> 
         @else
-        <var class=" h4"> سعر المنتج : {{ $product->price }} جنيه  </var> 
+        <var class=" h4"> سعر المنتج : {{ $productPrice }} {{ Session::get('currency') }}   </var> 
         @endif
     </div> 
     <dl class="row">

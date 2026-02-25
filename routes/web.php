@@ -145,11 +145,12 @@ Route::group(['middleware' => [] ], function() {
 
     Route::get('/complains' , [SiteController::class , 'complains'])->name('complains');
     Route::post('/complains' , [SiteController::class , 'store_complains'])->name('complains.store');
+    Route::get('/checkout' , [SiteController::class , 'checkout'] )->name('checkout.index');
+    Route::post('/checkout' , [SiteController::class , 'save_order'] )->name('checkout.save');
     Route::group(['middleware' => 'auth'], function() {
         Route::get('/profile' , [AccountController::class , 'profile'] )->name('site.account');
         Route::patch('/profile' , [AccountController::class , 'update_profile'] )->name('site.account.update');
-        Route::get('/checkout' , [SiteController::class , 'checkout'] )->name('checkout.index');
-        Route::post('/checkout' , [SiteController::class , 'save_order'] )->name('checkout.save');
+
 
         Route::get('orders' , [AccountController::class , 'orders'] )->name('site.orders.index');
         Route::get('orders/{order:number}/returns/create' , [AccountController::class , 'create_return'] )->name('site.orders.returns.create');

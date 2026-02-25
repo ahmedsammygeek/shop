@@ -10,47 +10,50 @@ class CartItem extends Component
     use LivewireAlert;
 
     public $item;
-    public $price;
+    public $productPrice;
     public $quantity;
+    public $product;
+    public $attributes;
+    public $item_id;
 
 
     public function mount()
     {
-        $this->price = $this->item->price;
+        $this->product = $this->item->associatedModel;
+        $this->productPrice = $this->item->price;
         $this->quantity = $this->item->quantity;
+        $this->attributes = $this->item->attributes;
+        $this->item_id = $this->item->id;
     }
 
 
-    public function updatedPrice()
-    {
-        $this->item->price = $this->price;
-        $this->item->save();
-        $this->emitTo('site.cart' , 'cartChanged');
-    }
 
     public function updatedQuantity()
     {
-        $this->item->quantity = $this->quantity;
-        $this->item->save();
+        // $new_quantity = $this->quantity;
+        // $user_seesion_id = session()->getId();
+        // $cart = \Cart::session($user_seesion_id);
+        // $cartItem = $cart->get($this->item['id']);
+        // if ($cartItem) {
+        //     $cart->update($this->item['id'], [
+        //         'quantity' => $new_quantity , 
+        //     ]);
+        // } 
         $this->emitTo('site.cart' , 'cartChanged');
     }
 
-    public function removeItem() {
-        $this->item->delete();
+    public function removeItem($item_id) {
+        $user_seesion_id = session()->getId();
+        \Cart::session($user_seesion_id)->remove($item_id);
         $this->alert( 'success' ,  'تم حذف المنتج من السله بنجاح');
         $this->emitTo( 'site.cart' ,  'cartChanged');
     }
 
 
-    public function editQuantity($quantity)
+    public function getTotalProductPriceProperty()
     {
-        $this->item->quantity = $quantity;
-        $this->item->save();
-        $this->alert( 'success' ,  'تم تعديل المنتج من السله بنجاح');
-        $this->emitSelf('cartChanged');
+        return $this->quantity * $this->productPrice;
     }
-
-
 
     public function render()
     {

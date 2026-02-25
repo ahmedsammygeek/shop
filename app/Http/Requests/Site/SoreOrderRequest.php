@@ -25,10 +25,13 @@ class SoreOrderRequest extends FormRequest
     {
         return [
             'address' => 'required' , 
+            'country_id' => 'required' , 
             'governorate_id' => 'required' , 
             'city' => 'required' , 
             'phone' => 'required' , 
-            'client_name' => 'required'
+            'first_name' => 'required'
+            'last_name' => 'required' , 
+            'whats_up' => 'required'
         ];
     }
 }

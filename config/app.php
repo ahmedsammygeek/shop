@@ -183,6 +183,7 @@ return [
         Aws\Laravel\AwsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class , 
         Ghanem\LaravelSmsmisr\SmsmisrServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
     ],
 
     /*
@@ -242,6 +243,7 @@ return [
         'AWS' => Aws\Laravel\AwsFacade::class,
         'Image' => Intervention\Image\Facades\Image::class , 
         'Smsmisr' => Ghanem\LaravelSmsmisr\Smsmisr::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
 
     ],
 

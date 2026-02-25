@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Variation;
 use App\Models\Product;
 use Auth;
+use Session;
 use App\Jobs\SendVerificationCodeToViaPhoneNumberJob;
 class Testcontroller extends Controller
 {
@@ -15,7 +16,14 @@ class Testcontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+
+        // dd(session()->flush());
+        // dd(session()->getId());
+        // dd( Session::forget('7AvGTzC0p6pkDNwq1FoiA32b7vyA2a9tFYvremhO_cart_items'));
+        dd(Session::all() );
+        // dd(Session::flush() , Session::all() );
+        dd(Session::flush() );
 
 
         dd('gg');
