@@ -100,7 +100,7 @@
                             </a>
                         </div>
 
-
+{{-- 
                         @if (Auth::check())
                         <div class="widget-header">
                             <a href="{{ route('user.logout') }}" class="widget-view">
@@ -110,7 +110,7 @@
                              <small class="text"> @lang('site.logout') </small>
                          </a>
                      </div>
-                     @endif 
+                     @endif  --}}
 
                  </div> <!-- widgets-wrap.// -->
              </div> <!-- col.// -->
