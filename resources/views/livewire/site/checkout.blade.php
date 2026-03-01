@@ -155,7 +155,7 @@
       <hr>
       <dl class="dlist-align">
           <dt style="width:143px !important;"> المجموع الفرعى </dt>
-          <dd class="text-right">{{ $this->sub_total }}  <span class="text-muted"> جنيه </span> </dd>
+          <dd class="text-right">{{ $this->sub_total }}  <span class="text-muted">  {{ Session::get('currency') }} </span> </dd>
         </dl>
         <dl class="dlist-align">
           <dt style="width:143px !important;">سعر الشحن:</dt>
@@ -163,13 +163,13 @@
             @if (!$this->shipping_price)
             <span class="text-muted"> لم يتم حسابه بعد </span>
             @else
-            {{ $this->shipping_price }}  <span class="text-muted"> جنيه </span>
+            {{ $this->shipping_price }}  <span class="text-muted">  {{ Session::get('currency') }} </span>
             @endif
           </dd>
         </dl>
         <dl class="dlist-align">
           <dt style="width:143px !important;">المبلغ الكلى :</dt>
-          <dd class="text-right  h5"><strong>{{ $this->total }} </strong> <span class="text-muted"> جنيه </span> </dd>
+          <dd class="text-right  h5"><strong>{{ $this->total }} </strong> <span class="text-muted">  {{ Session::get('currency') }} </span> </dd>
         </dl>
         
 

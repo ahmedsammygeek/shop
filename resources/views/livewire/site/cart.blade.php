@@ -46,7 +46,7 @@
       <div class="card-body">
         <dl class="dlist-align">
           <dt style="width:143px !important;" > السعر الكلى للمنتجات </dt>
-          <dd class="text-right">{{ $this->total }} <span class='text-muted'> جنيه</span> </dd>
+          <dd class="text-right">{{ $this->total }} <span class='text-muted'> {{ Session::get('currency') }}</span> </dd>
         </dl>
 
 
@@ -56,12 +56,12 @@
         </dl>
         <dl class="dlist-align">
           <dt style="width:143px !important;" >الخصم:</dt>
-          <dd class="text-right text-muted"> 0  </dd>
+          <dd class="text-right text-muted"> 0   {{ Session::get('currency') }}</dd>
         </dl>
 
         <dl class="dlist-align">
           <dt style="width:143px !important;" > المستحق للدفع :</dt>
-          <dd class="text-right h5"><strong>{{ $this->total }} </strong> <span class='text-muted'> جنيه </span> </dd>
+          <dd class="text-right h5"><strong>{{ $this->total }} </strong> <span class='text-muted'> {{ Session::get('currency') }} </span> </dd>
         </dl>
         <hr>
 

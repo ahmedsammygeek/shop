@@ -29,9 +29,9 @@ class SoreOrderRequest extends FormRequest
             'governorate_id' => 'required' , 
             'city' => 'required' , 
             'phone' => 'required' , 
-            'first_name' => 'required'
+            'first_name' => 'required',
             'last_name' => 'required' , 
-            'whats_up' => 'required'
+            'whats_up' => 'required' , 
         ];
     }
 }

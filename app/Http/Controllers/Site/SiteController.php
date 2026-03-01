@@ -215,7 +215,7 @@ class SiteController extends Controller
     }
 
     // SoreOrderRequest
-    public function save_order(Request $request)
+    public function save_order(SoreOrderRequest $request)
     {
 
         // dd('fdfd');
