@@ -82,15 +82,15 @@
 							</tr>
 							<tr>
 								<th> المبلغ hالفرعى   </th>
-								<td> {{ $order->subtotal }}  جنيه </td>
+								<td> {{ $order->subtotal }}  {{ $order->country->currency }} </td>
 							</tr>
 							<tr>
 								<th> المبلغ بعد الخصم  </th>
-								<td> {{ $order->total }}  جنيه </td>
+								<td> {{ $order->total }}  {{ $order->country->currency }} </td>
 							</tr>
 							<tr>
 								<th> قيم الشحن  </th>
-								<td> {{ $order->shipping_cost }}  جنيه </td>
+								<td> {{ $order->shipping_cost }}  {{ $order->country->currency }} </td>
 							</tr>
 
 							<tr>
@@ -157,7 +157,7 @@
 								<td>
 									{{ $item->color }}
 								</td>
-								<td> {{ $item->price }} <span class='text-muted' >جنيه </span> </td>
+								<td> {{ $item->price }} <span class='text-muted' >{{ $order->country->currency }} </span> </td>
 								<td> {{ $item->quantity }}   <span class='text-muted' >قطعه </span>  </td>
 							</tr>
 							@endforeach							
