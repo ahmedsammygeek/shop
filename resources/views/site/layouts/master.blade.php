@@ -30,11 +30,12 @@ if ($lang == 'ar') {
     <link href="{{ asset('site_assets/css/bootstrap-rtl.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <style>
         a , p , h1 , h2 , h3 , h4 , h5 , div , span , table , thead , tbody , button ,  th , tr , td {
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold !important;
+            {{-- font-family: 'Cairo', sans-serif; --}}
+            font-family: "Almarai", sans-serif;
         } 
     </style>
     @else

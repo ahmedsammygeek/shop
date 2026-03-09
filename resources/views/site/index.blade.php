@@ -72,44 +72,7 @@
             <div class="multiple-items row">
                 @foreach ($latest_products as $product)
                 <div class="col-lg-12">
-                    <div class="item-box">
-                        <div class="item-img">
-                            <div id="carouselExampleIndicators{{ $product->id }}" class="carousel slide"data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    @foreach ($product->images as $product_image)
-                                    <li data-target="#carouselExampleIndicators{{ $product->id }}" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : '' }}"></li>
-                                    @endforeach
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <a href="{{ route('site.products.show' , $product ) }}">
-                                            <img class="" style='height: 225px !important;' src="{{ Storage::url('products/'.$product->image) }}" alt="{{ $product->name }}">
-                                        </a>
-                                    </div>
-                                    @foreach ($product->images as $product_image)
-                                    <div class="carousel-item">
-                                        <a href="{{ route('site.products.show' , $product ) }}">
-                                            <img class="" style='height: 225px !important;' src="{{ Storage::url('products/'.$product_image->image) }}" alt="{{ $product->name }}">
-                                        </a>
-
-                                    </div>
-
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-text">
-                            <h6 class='text-center' > {{ $product->name }} </h6>
-
-                            <div class="list-right">
-                                <h4 class='text-center' style='color:#053534 !important' >{{ $product->price }} {{ Session::get('currency') }} </h4>
-                            </div>
-
-                            <div class="item-footer">
-                                <a href='{{ route('site.products.show' , $product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
-                            </div>
-                        </div>
-                    </div>
+                    <x-product-card :product="$product" />
                 </div> 
                 @endforeach
             </div>
@@ -133,45 +96,7 @@
         <div class="multiple-items row">
             @foreach ($best_selling_products as $product)
             <div class="col-lg-12">
-                <div class="item-box">
-                    <div class="item-img">
-                        <div id="carouselExampleIndicators{{ $product->id }}" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                @foreach ($product->images as $product_image)
-                                <li data-target="#carouselExampleIndicators{{ $product->id }}" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : '' }}"></li>
-                                @endforeach
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <a href='{{ route('site.products.show' , $product ) }}' >
-                                        <img class="d-block w-100 h-100 "  style='height: 225px !important;' src="{{ Storage::url('products/'.$product->image) }}" alt="First slide">
-                                    </a>
-                                </div>
-                                @foreach ($product->images as $product_image)
-                                <div class="carousel-item">
-                                    <a href='{{ route('site.products.show' , $product ) }}' >
-                                        <img class="d-block w-100 " style='height: 225px !important;' src="{{ Storage::url('products/'.$product_image->image) }}" alt="Second slide">
-                                    </a>
-                                </div>
-
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-text">
-                        <h6 class="text-center"> {{ $product->name }} </h6>
-
-                        <div class="list-right">
-
-                            <h6 class="text-center" style="color:#053534 !important" >{{ $product->price }}  {{ Session::get('currency') }} </h6>
-                        </div>
-
-
-                        <div class="item-footer">
-                            <a href='{{ route('site.products.show' , $product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
-                        </div>
-                    </div>
-                </div>
+                <x-product-card :product="$product" />
             </div> 
             @endforeach
         </div>
@@ -197,46 +122,7 @@
         <div class="multiple-items">
             @foreach ($home_category->products as $category_product)
             <div class="col-lg-12">
-                <div class="item-box">
-                    <div class="item-img">
-                        <div id="carouselExampleIndicators{{ $category_product->id }}" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                @foreach ($category_product->images as $product_image)
-                                <li data-target="#carouselExampleIndicators{{ $category_product->id }}" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : '' }}"></li>
-                                @endforeach
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <a href='{{ route('site.products.show' , $category_product ) }}'>
-                                        <img class="d-block w-100 h-100 " style='height: 225px !important;' src="{{ Storage::url('products/'.$category_product->image) }}" alt="First slide">
-                                    </a>
-                                </div>
-                                @foreach ($category_product->images as $product_image)
-                                <div class="carousel-item">
-                                    <a href='{{ route('site.products.show' , $category_product ) }}'>
-                                        <a  href='{{ route('site.products.show' , $category_product ) }}'>
-                                            <img class="d-block w-100 " style='height: 225px !important;' src="{{ Storage::url('products/'.$product_image->image) }}" alt="Second slide">
-                                        </a>
-                                    </a>
-                                </div>
-
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-text">
-                        <h4 class='text-center' > {{ $category_product->name }} </h4>
-
-                        <div class="list-right">
-                            <h6 class='text-center' style='color:#053534 !important' >{{ $category_product->price }} {{ Session::get('currency') }} </h6>
-                        </div>
-
-
-                        <div class="item-footer">
-                            <a href='{{ route('site.products.show' , $category_product ) }}'   class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
-                        </div>
-                    </div>
-                </div>
+                <x-product-card :product="$category_product" />
             </div> 
             @endforeach
         </div>

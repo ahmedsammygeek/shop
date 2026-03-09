@@ -173,7 +173,20 @@ class SiteController extends Controller
      */
     public function category_products(Category $category)
     {
-        $products = Product::where('active' , 1)->where('category_id' , $category->id )->latest()->paginate(20);
+        $products = Product::where('active' , 1)->where('category_id' , $category->id )
+        ->latest()
+        ->get();
+
+
+        $products = $products->map(function($product){
+            $country_id = Session::get('user_country');
+            $product->price =  $product->prices->where('country_id' , $country_id)->first()?->price ;
+            $product->price_after_discount =  $product->prices->where('country_id' , $country_id)->first()?->price_after_discount ;
+            return $product;
+        });
+
+
+
         return view('site.category_products' , compact('category' , 'products') );
     }
 
