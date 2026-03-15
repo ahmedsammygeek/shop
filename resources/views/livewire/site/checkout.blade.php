@@ -25,7 +25,7 @@
                 <option value="{{ $country->id }}"> {{ $country->name }} </option>
                 @endforeach
               </select>
-              @error('governorate_id')
+              @error('country_id')
               <p class="text-danger" > {{ $message }} </p>
               @enderror
             </div> 
@@ -59,6 +59,21 @@
               <p class="text-danger" > {{ $message }} </p>
               @enderror
             </div> 
+
+            @if ($country_id == 3)
+            <div class="form-group col-md-6">
+              <label> الاماره </label>
+              <select id="inputState" wire:model='governorate_id' name="governorate_id" class="form-control">
+                <option value=""></option>
+                @foreach ($this->governorates as $governorate)
+                <option value="{{ $governorate->id }}"> {{ $governorate->name }} </option>
+                @endforeach
+              </select>
+              @error('governorate_id')
+              <p class="text-danger" > {{ $message }} </p>
+              @enderror
+            </div> 
+            @else
             <div class="form-group col-md-6">
               <label> الرمز البريدى </label>
               <input type="text" class="form-control" name='postal_code' value="" >
@@ -66,6 +81,7 @@
               <p class="text-danger" > {{ $message }} </p>
               @enderror
             </div> 
+            @endif
 
             <div class="form-group col-md-12">
               <label> رقم واتس اب لتاكيد الطلب </label>
@@ -132,7 +148,7 @@
             <div class="co-item-name"> {{ $item->name }} </div>
             @foreach ($item->attributes as $key => $value)
             @if ($value)
-              <div class="co-item-variant">@lang('site.'.$key) : {{ $value }}</div>
+            <div class="co-item-variant">@lang('site.'.$key) : {{ $value }}</div>
             @endif
             @endforeach
           </div>

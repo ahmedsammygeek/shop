@@ -238,7 +238,7 @@ class SiteController extends Controller
     public function save_order(SoreOrderRequest $request)
     {
 
-        // dd('fdfd');
+
         $user_seesion_id = session()->getId();
         $sub_total = 0;
         $total = 0;
@@ -247,10 +247,8 @@ class SiteController extends Controller
             $sub_total += ($item->quantity * $item->price );
         }
         // calculate the shipping cost
-        $city = City::find($request->city);
-        $governorate = Governorate::find($request->governorate_id);
-        // $shipping_cost = $city->shipping_cost ? $city->shipping_cost : $governorate->shipping_cost;
-        $shipping_cost = 50;
+        $country = Country::find($request->country_id);
+        $shipping_cost = $country->shipping_cost;
 
         $order = new Order;
         $order->number = time().mt_rand(1 , 1000).Auth::id();
@@ -264,10 +262,11 @@ class SiteController extends Controller
         $order->country_id = $request->country_id;
         $order->address = $request->address;
         $order->shipping_statues_id = 1;
-        $order->phone = $request->phone;
+        $order->postal_code = $request->postal_code;
         $order->whats_up = $request->whats_up;
         $order->first_name = $request->first_name;
         $order->last_name = $request->last_name;
+        $order->phone = $request->whats_up;
         $order->save();
 
         foreach ($items as $item) {
@@ -281,8 +280,11 @@ class SiteController extends Controller
             $order_item->save();
             // dispatch(new IncreasProductSalesCountJob($item->associatedModel['id']));
         }
-        \Cart::session($user_seesion_id)->clear();
-        return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
+
+
+
+        // \Cart::session($user_seesion_id)->clear();
+        // return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
     }
 
     public function complains()

@@ -26,9 +26,9 @@ class SoreOrderRequest extends FormRequest
         return [
             'address' => 'required' , 
             'country_id' => 'required' , 
-            'governorate_id' => 'required' , 
+            'governorate_id' => 'nullable' , 
+            'postal_code' => 'nullable' , 
             'city' => 'required' , 
-            'phone' => 'required' , 
             'first_name' => 'required',
             'last_name' => 'required' , 
             'whats_up' => 'required' , 
