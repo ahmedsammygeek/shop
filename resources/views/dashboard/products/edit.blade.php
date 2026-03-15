@@ -38,26 +38,6 @@
 						<div class="form-group row">
 
 
-
-							<div class="col-md-6">
-								<div  class='mb-2' >
-									<label class="col-form-label"> @lang('products.image') </label>
-									<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
-									@error('image')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div  class='mb-2' >
-									<label class="col-form-label"> @lang('products.images') </label>
-									<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
-									@error('images')
-									<p  class='text-danger' >  {{ $message }} </p>
-									@enderror
-								</div>
-							</div>
-
 							<div class="col-md-6">
 								<div  class='mb-2' >
 									<label class="col-form-label"> @lang('products.name_ar') </label>
@@ -76,8 +56,8 @@
 									@enderror
 								</div>
 							</div>
-							
-							<div class="col-md-4">
+
+							<div class="col-md-3">
 								<div  class='mb-2' >
 									<label class="col-form-label"> @lang('products.category') </label>
 									<select name="category_id" id="inputCate" class="form-control" required="required">
@@ -91,40 +71,38 @@
 									@enderror
 								</div>
 							</div>
-							<div class="col-md-4">
+
+
+
+
+							<div class="col-md-3">
 								<div  class='mb-2' >
-									<label class="col-form-label"> @lang('products.brand') </label>
-									<select name="brand_id" id="inputCate" class="form-control" >
-										<option value=""></option>
-										@foreach ($brands as $brand)
-										<option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? 'selected="selected"' : '' }} >{{ $brand->name }}</option>
-										@endforeach
-									</select>
-									@error('brand_id')
+									<label class="col-form-label"> @lang('products.image') </label>
+									<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
+									@error('image')
 									<p  class='text-danger' >  {{ $message }} </p>
 									@enderror
 								</div>
 							</div>
-							
-
-
-
-							
-
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div  class='mb-2' >
-									<label class="col-form-label"> البارد كود </label>
-									<input type="text" name="barcode" value="{{ $product->barcode }}" class="form-control @error('barcode') is-invalid @enderror " >
-									@error('barcode')
+									<label class="col-form-label"> @lang('products.images') </label>
+									<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
+									@error('images')
 									<p  class='text-danger' >  {{ $message }} </p>
 									@enderror
 								</div>
 							</div>
 
-
-
-
-
+							<div class="col-md-3">
+								<div  class='mb-2' >
+									<label class="col-form-label"> دليل المقاسات </label>
+									<input type="file" name="size_guide" class="form-control @error('size_guide') is-invalid @enderror " >
+									@error('size_guide')
+									<p  class='text-danger' >  {{ $message }} </p>
+									@enderror
+								</div>
+							</div>
 							<div class="col-md-6">
 								<div  class='mb-2' >
 									<label class="col-form-label"> @lang('products.mini_description_ar') </label>

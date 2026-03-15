@@ -35,11 +35,11 @@
         </div> 
         <div class="form-group col-md">
 
-            @if ($finalVariant || !$hasVariant )
+            {{-- @if ($finalVariant || !$hasVariant ) --}}
             <a wire:click='add_to_cart()' href='#' class="btn btn-primary"> 
                 <i class="fas fa-shopping-cart"></i> <span class="text"> اضف الى السله </span> 
             </a>
-            @endif      
+            {{-- @endif       --}}
         </div> 
     </div> 
 </div>

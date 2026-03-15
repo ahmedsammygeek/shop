@@ -34,7 +34,6 @@ if ($lang == 'ar') {
 
     <style>
         a , p , h1 , h2 , h3 , h4 , h5 , div , span , table , thead , tbody , button ,  th , tr , td {
-            {{-- font-family: 'Cairo', sans-serif; --}}
             font-family: "Almarai", sans-serif;
         } 
     </style>
@@ -69,15 +68,16 @@ if ($lang == 'ar') {
    <link href="{{ asset('site_assets/css/ui3661.css') }}" rel="stylesheet" type="text/css"/>
    <link href="{{ asset('site_assets/css/responsive3661.css') }}" rel="stylesheet" type="text/css" />
    <script src="{{ asset('site_assets/js/script3661.js') }}" type="text/javascript"></script>
-   <script src="{{ asset('site_assets/js/owl.carousel.min.js') }}"></script>
-   <script src="{{ asset('site_assets/js/main.js') }}"></script>
-   <script src="{{ asset('site_assets/js/all.min.js') }}"></script>
-   <script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
-   <script src="{{ asset('site_assets/js/slick.min.js') }}"></script>
+   {{-- <script src="{{ asset('site_assets/js/owl.carousel.min.js') }}"></script> --}}
+{{--    <script src="{{ asset('site_assets/js/main.js') }}"></script>
+   <script src="{{ asset('site_assets/js/all.min.js') }}"></script> --}}
+  {{--  <script src="{{ asset('site_assets/js/sweetalert2.js') }}"></script>
+   <script src="{{ asset('site_assets/js/slick.min.js') }}"></script> --}}
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    @yield('scripts')
    @stack('scripts')
+   @stack('styles')
    <livewire:scripts />
    <x-livewire-alert::scripts />
 </head>

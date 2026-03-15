@@ -46,8 +46,14 @@ class ProductController extends Controller
 
         if(!$product->add($request->all()))
             return redirect()->back()->with('error' , trans('products.adding_error'));
+
         if($request->hasFile('image')) {
             $product->image = basename($request->file('image')->store('products'));
+            $product->save();
+        }
+
+        if($request->hasFile('size_guide')) {
+            $product->size_guide = basename($request->file('size_guide')->store('products'));
             $product->save();
         }
 
@@ -147,8 +153,16 @@ class ProductController extends Controller
     {
         if(!$product->edit($request->all()))
             return redirect()->back()->with('error' , trans('products.editing_error'));
+
+        
         if($request->hasFile('image')) {
             $product->image = basename($request->file('image')->store('products'));
+            $product->save();
+        }
+
+
+        if($request->hasFile('size_guide')) {
+            $product->size_guide = basename($request->file('size_guide')->store('products'));
             $product->save();
         }
 

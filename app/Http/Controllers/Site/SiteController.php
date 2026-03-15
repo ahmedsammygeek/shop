@@ -224,7 +224,14 @@ class SiteController extends Controller
 
     public function checkout()
     {
-        return view('site.checkout');
+        $cartItems = [];
+        $subtotal = 0;
+        $total = 0;
+        $shippingCost = 0;
+        $currency = 'SR';
+        $governorates = [];
+        $discount = 0;
+        return view('site.checkout' , compact('cartItems' , 'subtotal' , 'total' , 'shippingCost' , 'currency' , 'governorates' , 'discount'));
     }
 
     // SoreOrderRequest

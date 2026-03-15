@@ -9,3 +9,8 @@
 @endsection
 
 
+
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('site_assets/css/checkout.css') }}">
+@endpush

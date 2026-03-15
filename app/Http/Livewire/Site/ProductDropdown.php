@@ -8,6 +8,7 @@ class ProductDropdown extends Component
 {
     public $variations;
     public $selectedVariation;
+    public $show_sizes_ruler = true;
     
 
     public function getSelectedVariationModelProperty()

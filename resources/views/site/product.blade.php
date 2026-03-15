@@ -159,8 +159,11 @@
 
 @endsection
 
-@push('scripts')
+@push('styles')
+<link rel="stylesheet" href="{{ asset('site_assets/css/product-variation.css') }}">
+@endpush
 
+@push('scripts')
 <script type="text/javascript">
   $(function() {
 

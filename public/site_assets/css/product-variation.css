@@ -1,0 +1,286 @@
+.product-info-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      max-width: 520px;
+      margin: 40px auto;
+      box-shadow: 0 2px 20px rgba(0,0,0,.07);
+    }
+
+    .product-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c0392b;
+      margin-bottom: 20px;
+    }
+
+    .product-price span {
+      font-size: 0.95rem;
+      color: #888;
+      font-weight: 500;
+      margin-right: 6px;
+    }
+
+    .var-divider {
+      border: none;
+      border-top: 1px solid #efefef;
+      margin: 18px 0;
+    }
+
+    /* ============================================================
+       STOCK BADGE
+    ============================================================ */
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .stock-badge.in-stock  { background: #eafaf1; color: #27ae60; }
+    .stock-badge.low-stock { background: #fef9e7; color: #e67e22; }
+
+    .stock-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ============================================================
+       VARIATION BLOCK
+    ============================================================ */
+    .variation-block { margin-bottom: 22px; }
+
+    .variation-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #888;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hide all native radio inputs — visually only */
+    .variation-options input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       SIZE — radio inputs styled as pill labels
+    ============================================================ */
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .size-options label {
+      min-width: 52px;
+      height: 44px;
+      padding: 0 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #444;
+      cursor: pointer;
+      transition: all .18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .size-options label:hover {
+      border-color: #1a1a1a;
+      color: #1a1a1a;
+    }
+
+    /* ✅ Checked state — pure CSS, zero JS */
+    .size-options input[type="radio"]:checked + label {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    }
+
+    /* Out-of-stock: add class="oos" to the <li> */
+    .size-options li.oos label {
+      color: #ccc;
+      border-color: #eee;
+      cursor: not-allowed;
+      text-decoration: line-through;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       COLOR — radio inputs styled as circular swatches
+    ============================================================ */
+    .color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .color-options label {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: block;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 0 0 1.5px #ddd;
+    }
+
+    .color-options label:hover {
+      transform: scale(1.12);
+    }
+
+    /* Tooltip — pulled from data-label on the <label> */
+    .color-options label::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.72rem;
+      font-family: 'Cairo', sans-serif;
+      white-space: nowrap;
+      padding: 3px 8px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s ease;
+    }
+
+    .color-options label:hover::after { opacity: 1; }
+
+    /* ✅ Checked state — pure CSS, zero JS */
+    .color-options input[type="radio"]:checked + label {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4.5px #1a1a1a;
+      transform: scale(1.08);
+    }
+
+    /* ============================================================
+       QUANTITY — native number input, styled
+    ============================================================ */
+    .qty-wrapper {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      border: 1.5px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    input[type="number"].qty-input {
+      width: 60px;
+      height: 44px;
+      border: none;
+      border-right: 1.5px solid #ddd;
+      border-left: 1.5px solid #ddd;
+      background: #fff;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"].qty-input::-webkit-inner-spin-button,
+    input[type="number"].qty-input::-webkit-outer-spin-button { display: none; }
+
+    .qty-step {
+      width: 44px;
+      height: 44px;
+      background: #f8f8f8;
+      border: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #444;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: background .15s;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .qty-step:hover { background: #ececec; }
+
+    /* ============================================================
+       ADD TO CART BUTTON
+    ============================================================ */
+    .btn-add-to-cart {
+      width: 100%;
+      padding: 14px 20px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .18s ease, transform .12s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .btn-add-to-cart:hover  { background: #333; transform: translateY(-1px); }
+    .btn-add-to-cart:active { transform: translateY(0); }
+    .btn-add-to-cart svg    { flex-shrink: 0; }
+
+    /* ============================================================
+       SIZE GUIDE LINK
+    ============================================================ */
+    .size-guide-link {
+      font-size: 0.78rem;
+      color: #888;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-right: auto;
+    }
+
+    .size-guide-link:hover { color: #1a1a1a; }
+
+    /* ============================================================
+       DEMO NOTE
+    ============================================================ */
+    .demo-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #aaa;
+      margin-bottom: 8px;
+    }

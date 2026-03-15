@@ -55,7 +55,7 @@
 										</div>
 									</div>
 
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.category') </label>
 											<select name="category_id" id="select1" class="form-control ">
@@ -71,7 +71,7 @@
 									</div>
 
 
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.image') </label>
 											<input type="file" name="image" class="form-control @error('image') is-invalid @enderror " >
@@ -80,11 +80,20 @@
 											@enderror
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<div  class='mb-2' >
 											<label class="col-form-label"> @lang('products.images') </label>
 											<input type="file" name="images[]" multiple='multiple' class="form-control @error('images') is-invalid @enderror " >
 											@error('images')
+											<p  class='text-danger' >  {{ $message }} </p>
+											@enderror
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div  class='mb-2' >
+											<label class="col-form-label"> دليل المقاسات </label>
+											<input type="file" name="size_guide" class="form-control @error('size_guide') is-invalid @enderror" >
+											@error('size_guide')
 											<p  class='text-danger' >  {{ $message }} </p>
 											@enderror
 										</div>
