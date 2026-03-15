@@ -114,42 +114,7 @@
 
       @foreach ($best_selling_products as $best_selling_product)
       <div class="col-lg-2">
-        <div class="item-box">
-          <div class="item-img">
-            <div id="carouselExampleIndicators{{ $best_selling_product->id }}" class="carousel slide"data-ride="carousel">
-              <ol class="carousel-indicators">
-                @foreach ($best_selling_product->images as $product_image)
-                <li data-target="#carouselExampleIndicators{{ $best_selling_product->id }}" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : '' }}"></li>
-                @endforeach
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="" style='height: 225px !important;' src="{{ Storage::url('products/'.$best_selling_product->image) }}" alt="First slide">
-                </div>
-                @foreach ($best_selling_product->images as $product_image)
-                <div class="carousel-item">
-                  <img class="" style='height: 225px !important;' src="{{ Storage::url('products/'.$product_image->image) }}" alt="Second slide">
-                </div>
-
-                @endforeach
-              </div>
-            </div>
-          </div>
-          <div class="item-text">
-            <h6 class='text-center' > {{ $best_selling_product->name }} </h6>
-
-
-            <div class="list-left">
-              <h6 class='text-center' style='font-size: 23px !important;color:#0B2D72 !important;'> 
-                {{ $best_selling_product->price }} {{ Session::get('currency') }}
-              </h6>
-            </div>
-
-            <div class="item-footer">
-              <a href='{{ route('site.products.show' , $best_selling_product ) }}' class='btn btn-primary btn-block' > شاهد تفاصيل المنتج  </a>
-            </div>
-          </div>
-        </div>
+        <x-product-card :product="$best_selling_product" />
       </div>
       @endforeach
 
