@@ -1,7 +1,7 @@
 <li class='row ml-2' >
     <div class="col-md-2">
         <div class="form-group">
-            <label class="col-form-label"> الباركود </label>
+            <label class="col-form-label"> اللون </label>
             <input type="color" class="form-control @error('color') is-invalid @enderror" wire:model='color' >
             @error('color')
             <p  class='text-danger' >  {{ $message }} </p>
@@ -22,24 +22,14 @@
 
     <div class="col-md-2">
         <div class="form-group">
-            <label class="col-form-label"> البار كود </label>
-            <input type="text" class="form-control @error('barcode') is-invalid @enderror" wire:model='barcode' >
-            @error('barcode')
+            <label class="col-form-label"> المخزون </label>
+            <input type="text" class="form-control @error('stocks') is-invalid @enderror" wire:model='stocks' >
+            @error('stocks')
             <p  class='text-danger' >  {{ $message }} </p>
             @enderror
         </div>
     </div>
 
-
-    <div class="col-md-2">
-        <div class="form-group">
-            <label class="col-form-label"> السعر </label>
-            <input type="text" class="form-control @error('price') is-invalid @enderror" wire:model='price' >
-            @error('price')
-            <p  class='text-danger' >  {{ $message }} </p>
-            @enderror
-        </div>
-    </div>
 
 
     <div class="col-md-2">

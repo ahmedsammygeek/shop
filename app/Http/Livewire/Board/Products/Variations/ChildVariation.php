@@ -9,9 +9,9 @@ class ChildVariation extends Component
 
     public $variant;
     public $title;
-    public $price;
-    public $barcode;
+    public $stocks;
     public $color;
+
 
 
     public function deleteVariant() {
@@ -23,8 +23,7 @@ class ChildVariation extends Component
     public function mount()
     {
         $this->title = $this->variant->title;
-        $this->price = $this->variant->price;
-        $this->barcode = $this->variant->barcode;
+        $this->stocks = $this->variant->stocks;
         $this->color = $this->variant->color;
     }
 
@@ -40,21 +39,12 @@ class ChildVariation extends Component
         $this->variant->save();
     }
 
-    public function updatedPrice()
+    public function updatedStocks()
     {
-        if ($this->price == null ) {
-            $this->variant->price = null;
-        } else {
-            $this->variant->price = $this->price;
-        }
+        $this->variant->stocks = $this->stocks;
         $this->variant->save();
     }
 
-    public function updatedBarcode()
-    {
-        $this->variant->barcode = $this->barcode;
-        $this->variant->save();
-    }
 
 
     public function render()

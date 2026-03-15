@@ -17,7 +17,6 @@
                                 <p class='text-danger'> {{ $message }} </p>
                                 @enderror
                             </div>
-
                         </div>
 
                         <div class="form-group row">
@@ -28,25 +27,12 @@
                                 <p class='text-danger'> {{ $message }} </p>
                                 @enderror
                             </div>
-
                         </div>
-
                         <div class="form-group row">
-                            <label class="col-form-label col-sm-3"> باركود </label>
+                            <label class="col-form-label col-sm-3"> المخزون </label>
                             <div class="col-sm-9">
-                                <input type="text" wire:model='barcode' placeholder="باركود" class="form-control @error('barcode') is-invalid @enderror ">
-                                @error('barcode')
-                                <p class='text-danger'> {{ $message }} </p>
-                                @enderror
-                            </div>
-                            
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-sm-3"> السعر </label>
-                            <div class="col-sm-9">
-                                <input type="text" wire:model='price' placeholder="السعر" class="form-control @error('price') is-invalid @enderror ">
-                                @error('price')
+                                <input type="text" wire:model='stocks' placeholder="10" class="form-control @error('stocks') is-invalid @enderror ">
+                                @error('stocks')
                                 <p class='text-danger'> {{ $message }} </p>
                                 @enderror
                             </div>

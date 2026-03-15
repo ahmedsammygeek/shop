@@ -1,9 +1,5 @@
 <div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
-
-	<!-- Sidebar content -->
 	<div class="sidebar-content">
-
-		<!-- User menu -->
 		<div class="sidebar-section sidebar-user my-1">
 			<div class="sidebar-section-body">
 				<div class="media">
@@ -30,15 +26,11 @@
 				</div>
 			</div>
 		</div>
-		<!-- /user menu -->
-
-
-		<!-- Main navigation -->
 		<div class="sidebar-section">
 			<ul class="nav nav-sidebar" data-nav-type="accordion">
 
 				@php
-				$home = $admins = $brands = $governorates = $cities = $coupons = $categories = $marketers  = $pages = $products = $withdrawals = $countries = $expenses = $challenges  = $slides = $orders = $complains = $settings = $warehouses = $messages = '';
+				$home = $admins = $brands = $governorates  = $coupons = $categories = $marketers  = $pages = $products = $withdrawals = $countries = $expenses = $challenges  = $slides = $orders = $complains = $settings = $warehouses = $messages = '';
 
 
 				switch (request()->segment(3)) {
@@ -106,8 +98,6 @@
 					break;
 				}
 				@endphp
-
-				<!-- Main -->
 				<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs"> @lang('dashboard.dashboard') </div> <i class="icon-menu" title="Main"></i></li>
 
 				<li class="nav-item">
@@ -192,7 +182,6 @@
 					</ul>
 				</li>	
 
-
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ $coupons }}"><i class="icon-images3"></i> <span> كوبونات الخصم </span></a>
 					<ul class="nav nav-group-sub" >
@@ -217,31 +206,14 @@
 					</ul>
 				</li>	
 
-
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ $cities }}"><i class="icon-images3"></i> <span> المدن </span></a>
-					<ul class="nav nav-group-sub" >
-						<li class="nav-item"><a href="{{ route('dashboard.cities.index') }}" class="nav-link"> عرض كافه المدن</a></li>
-						<li class="nav-item"><a href="{{ route('dashboard.cities.create') }}" class="nav-link"> إنشاء مدينه جديده</a></li>
-					</ul>
-				</li>	
-
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ $expenses }}"><i class="icon-images3"></i> <span> المصروفات </span></a>
 					<ul class="nav nav-group-sub" >
 						<li class="nav-item"><a href="{{ route('dashboard.expenses.index') }}" class="nav-link"> عرض كافه المصروفات</a></li>
 						<li class="nav-item"><a href="{{ route('dashboard.expenses.create') }}" class="nav-link"> إضافه مصروفات جديده</a></li>
-						
 					</ul>
 				</li>	
-
-
-				
 			</ul>
 		</div>
-		<!-- /main navigation -->
-
 	</div>
-	<!-- /sidebar content -->
-
 </div>

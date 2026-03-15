@@ -14,16 +14,13 @@ class AddChildVariant extends Component
     public $variantId;
     public $variant;
     public $title;
-    public $barcode;
-    public $price;
+    public $stocks;
     public $color;
     public $images;
 
     protected $rules = [
         'title' => 'required',
-        'barcode' => 'nullable',
-        'price' => 'nullable',
-        'color' => 'required',
+        'stocks' => 'nullable',
         'images.*' => 'required|image'
     ];
 
@@ -42,8 +39,7 @@ class AddChildVariant extends Component
         $variant = new Variation;
         $variant->parent_id = $this->variantId;
         $variant->title = $this->title;
-        $variant->barcode = $this->barcode;
-        $variant->price = $this->price;
+        $variant->stocks = $this->stocks;
         $variant->color = $this->color;
         $variant->type = 'color';
         $variant->user_id = Auth::id();
@@ -51,7 +47,7 @@ class AddChildVariant extends Component
         $variant->save();
         $this->barcode = null;
         $this->title = null;
-        $this->price = null;
+        $this->stocks = null;
         $this->color = null;
         $this->images = null;
         $this->emit('close_add_modal');

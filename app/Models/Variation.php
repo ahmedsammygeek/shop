@@ -27,13 +27,14 @@ class Variation extends Model
 
     public function stockCount()
     {
-        return $this->descendantsAndSelf->sum(fn ($variation) => $variation->stocks->sum('quantity'));
+        // return $this->descendantsAndSelf->sum(fn ($variation) => $variation->stocks->sum('quantity'));
+        return $this->stocks;
     }
 
-    public function stocks()
-    {
-        return $this->hasMany(Stock::class);
-    }
+    // public function stocks()
+    // {
+    //     return $this->hasMany(Stock::class);
+    // }
 
     public function product()
     {

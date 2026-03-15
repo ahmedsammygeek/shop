@@ -11,8 +11,7 @@ class ParentVariation extends Component
     public $variant;
     public $type;
     public $title;
-    public $barcode;
-    public $price;
+    public $stocks;
 
     protected $listeners = ['variantAdded' => '$refresh' , 'variantDeleted' => '$refresh' ];
 
@@ -25,8 +24,7 @@ class ParentVariation extends Component
     public function mount() {
         $this->type = $this->variant->type;
         $this->title = $this->variant->title;
-        $this->barcode = $this->variant->barcode;
-        $this->price = $this->variant->price;
+        $this->stocks = $this->variant->stocks;
     }
 
     public function updatedType()
@@ -41,21 +39,12 @@ class ParentVariation extends Component
         $this->variant->save();
     }
 
-    public function updatedPrice()
+    public function updatedStocks()
     {
-        if ($this->price == null ) {
-            $this->variant->price = null;
-        } else {
-            $this->variant->price = $this->price;
-        }
+        $this->variant->stocks = $this->stocks;
         $this->variant->save();
     }
 
-    public function updatedBarcode()
-    {
-        $this->variant->barcode = $this->barcode;
-        $this->variant->save();
-    }
 
     public function render()
     {
