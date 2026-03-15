@@ -56,7 +56,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div  class='mb-2' >
 									<label class="col-form-label"> رمز العمله بالعربيه </label>
 									<input type="text" class="form-control @error('currency_ar') is-invalid @enderror" name="currency_ar" value="{{ $country->getTranslation('currency' ,'ar') }}" >
@@ -65,11 +65,21 @@
 									@enderror
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div  class='mb-2' >
 									<label class="col-form-label"> رمز العمله بالانجليزيه </label>
 									<input type="text" class="form-control @error('currency_en') is-invalid @enderror" name="currency_en" value="{{ $country->getTranslation('currency' ,'en') }}" >
 									@error('currency_en')
+									<p  class='text-danger' >  {{ $message }} </p>
+									@enderror
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div  class='mb-2' >
+									<label class="col-form-label"> تكله الشحن </label>
+									<input type="text" class="form-control @error('shipping_cost') is-invalid @enderror" name="shipping_cost" value="{{ $country->shipping_cost }}" >
+									@error('shipping_cost')
 									<p  class='text-danger' >  {{ $message }} </p>
 									@enderror
 								</div>

@@ -17,7 +17,6 @@ class ChildVariation extends Component
     public function deleteVariant() {
         $this->variant->delete();
         $this->emit('variantDeleted');
-        // return redirect(request()->header('Referer'))->with('success' , 'تم الحذف بنجاح' ); 
     }
 
     public function mount()

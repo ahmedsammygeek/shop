@@ -48,6 +48,7 @@ class CountryContoller extends Controller
         $country->setTranslation('currency' , 'ar'  , $request->currency_ar );
         $country->setTranslation('currency' , 'en'  , $request->currency_en );
         $country->active = $request->filled('active') ? 1 : 0;
+        $country->shipping_cost = $request->shipping_cost;
         $country->user_id = Auth::id();
 
         if ($request->hasFile('image')) {
@@ -98,6 +99,7 @@ class CountryContoller extends Controller
         $country->setTranslation('name' , 'en'  , $request->name_en );
         $country->setTranslation('currency' , 'ar'  , $request->currency_ar );
         $country->setTranslation('currency' , 'en'  , $request->currency_en );
+        $country->shipping_cost = $request->shipping_cost;
         $country->active = $request->filled('active') ? 1 : 0;
 
         if ($request->hasFile('image')) {

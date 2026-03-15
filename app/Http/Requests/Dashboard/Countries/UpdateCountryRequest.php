@@ -27,7 +27,8 @@ class UpdateCountryRequest extends FormRequest
              'name_en' => 'required' , 
             'name_ar' => 'required' , 
             'active' => 'nullable' ,
-            'image' => 'nullable|image'
+            'image' => 'nullable|image' , 
+            'shipping_cost' => 'nullable' ,
         ];
     }
 }

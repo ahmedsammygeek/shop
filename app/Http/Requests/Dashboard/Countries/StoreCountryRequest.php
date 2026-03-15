@@ -28,6 +28,7 @@ class StoreCountryRequest extends FormRequest
             'name_ar' => 'required' , 
             'active' => 'nullable' , 
             'image' => 'nullable|image' , 
+            'shipping_cost' => 'nullable' , 
         ];
     }
 }
