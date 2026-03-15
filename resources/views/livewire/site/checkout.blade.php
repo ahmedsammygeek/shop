@@ -98,10 +98,13 @@
             <legend> طرق الشحن </legend>
             <div class="col-md-12">
               <div class="co-ship-box">
-                <div class="co-ship-name">الشحن الى السعودية</div>
+                <div class="co-ship-name">الشحن الى {{ $this->choosed_country?->name }}</div>
                 <div class="co-ship-price">
-                  <span class="sp-old">---سعر---</span>
+                  @if ($this->shipping_price == 0)
                   <span class="sp-new">FREE</span>
+                  @else
+                  <span class="sp-new">{{ $this->shipping_price }} {{ Session::get('currency') }} </span>
+                  @endif
                 </div>
               </div> 
             </div>
@@ -159,14 +162,17 @@
 
       <div class="co-totals">
         <div class="co-total-row">
-          <span style="color:#555;">Subtotal · 257 items</span>
-          <span class="t-val">٦٬٧٠٣٫٠٠٠ ر.ع</span>
+          <span style="color:#555;"> المجموع الفرعى · {{ $items->count() }} قطعه</span>
+          <span class="t-val"> {{ $total + $this->shipping_price }} {{ Session::get('currency') }}</span>
         </div>
         <div class="co-total-row">
           <span style="color:#555;">الشحن</span>
           <div class="co-shipping-val">
-            <span class="t-old">---سعر---</span>
+            @if ($this->shipping_price == 0)
             <span class="t-free">FREE</span>
+            @else
+            <span class="t-free">{{ $this->shipping_price }} {{ Session::get('currency') }}</span>
+            @endif
           </div>
         </div>
         <div class="co-free-note">
@@ -176,15 +182,15 @@
         <div class="co-grand">
           <span class="co-grand-label">المجموع</span>
           <div class="co-grand-val">
-            ٦٬٧٠٣٫٠٠٠
-            <span class="co-grand-currency">ر.ع</span>
-            <span class="co-grand-currency">OMR</span>
+            {{ $total + $this->shipping_price }}
+            <span class="co-grand-currency">{{ Session::get('currency') }}</span>
+
           </div>
         </div>
         <div class="co-discount-row">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           اجمالى الخصم
-          <span style="margin-right:auto;">٤٫٠٠٠ ر.ع</span>
+          <span style="margin-right:auto;"> {{ $total + $this->shipping_price }} ر.ع</span>
         </div>
       </div>
     </div>

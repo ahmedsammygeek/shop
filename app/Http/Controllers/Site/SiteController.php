@@ -283,8 +283,8 @@ class SiteController extends Controller
 
 
 
-        // \Cart::session($user_seesion_id)->clear();
-        // return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
+        \Cart::session($user_seesion_id)->clear();
+        return view('site.success')->with('success' , 'تم انشاء الطلب بنجاح' );
     }
 
     public function complains()

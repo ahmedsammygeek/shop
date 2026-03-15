@@ -22,6 +22,12 @@ class Checkout extends Component
     }
 
 
+    public function getChoosedCountryProperty()
+    {
+        return Country::find($this->country_id);
+    }
+
+
     public function getShippingPriceProperty()
     {
         if ($this->country_id) {
@@ -56,8 +62,9 @@ class Checkout extends Component
         $items = \Cart::session($user_seesion_id)->getContent();
         $total = 0;
         foreach ($items as $item) {
-            $total += ($item->quantity * $item->product?->price );
+            $total += ($item->quantity * $item->price );
         }
+
         return view('livewire.site.checkout' , compact('total' , 'items'  ) );
     }
 }
