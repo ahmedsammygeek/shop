@@ -110,10 +110,10 @@
       <h3 class="title-section"> @lang('site.best_selling') </h3>
     </header>
 
-    <div class="row row-sm">
+    <div class="row">
 
       @foreach ($best_selling_products as $best_selling_product)
-      <div class="col-lg-2">
+      <div class="col-6 col-md-3 col-lg-2">
         <x-product-card :product="$best_selling_product" />
       </div>
       @endforeach
@@ -145,4 +145,7 @@
 @section('styles')
 {{-- <link rel="icon" href="{{ asset('image-zoom/css/image-zoom.css') }}"> --}}
 <link rel="stylesheet" href="{{ Storage::url('site_assets/css/slick-theme.css') }}">
+<style>
+  
+</style>
 @endsection
