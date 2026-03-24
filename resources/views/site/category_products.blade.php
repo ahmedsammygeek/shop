@@ -19,7 +19,7 @@
         </header>
         <div class="row">
             @foreach ($products as $product)
-            <div class="col-lg-2">
+            <div class="col-6 col-lg-2">
                 <x-product-card :product="$product" />
             </div> 
             @endforeach
