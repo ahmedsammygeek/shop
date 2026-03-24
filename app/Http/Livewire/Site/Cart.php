@@ -9,21 +9,14 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Cart extends Component
 {
     use LivewireAlert;
-    // protected $listeners = ['cartChanged' => '$refresh' ];
-
     protected $listeners = ['cartChanged' => '$refresh'];
-
     public $subtotal;
     public $coupon;
-
-    // public function doSomeThing() {
-
-    //     dd('ggg');
-    // }
 
     public function chackCoupon() {
         
     }
+
     public function getTotalProperty() {
         $user_seesion_id = session()->getId();
         $items =  \Cart::session($user_seesion_id)->getContent();
@@ -39,8 +32,7 @@ class Cart extends Component
     public function render()
     {
         $user_seesion_id = session()->getId();
-        $items =  \Cart::session($user_seesion_id)->getContent();
-
+        $items = \Cart::session($user_seesion_id)->getContent();
         $total = $this->getTotalProperty();
         return view('livewire.site.cart' , compact('items' , 'total'));
     }

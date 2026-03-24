@@ -4,31 +4,6 @@
 
 
  <header class="section-header">
-{{--      <nav class="navbar d-none d-md-flex p-md-0 navbar-expand-sm navbar-light border-bottom">
-        <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTop4">
-            <ul class="navbar-nav mr-auto">
-                <li><a href="#" class="nav-link"> المساعده </a></li>
-                <li><a href="#" class="nav-link"> المساعده </a></li>
-            </ul>
-            <ul class="navbar-nav">
-                <li>
-                    الشحن الى مصر
-
-                    @foreach ($data['countries'] as $country)
-                        <a href="#" class="nav-link"> 
-                            <img src="{{ Storage::url('countries/'.$country->image) }}" height="16"> {{ $country->name }}   الشحن الى 
-                        </a>
-                        @endforeach
-                    </li>
-                </ul> <!-- list-inline //  -->
-            </div> <!-- navbar-collapse .// -->
-        </div> <!-- container //  -->
-    </nav> --}}
-
     <section class="header-main border-bottom">
         <div class="container">
             <div class="row align-items-center">
@@ -50,73 +25,20 @@
 
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-search"></i> @lang('site.search')
+                                    <i class="fa fa-search"></i> 
                                 </button>
                             </div>
                         </div>
                     </form> 
-                </div> <!-- col.// -->
+                </div> 
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="widgets-wrap float-md-right">
-
-{{--                         @if (!Auth::check())
-                        <div class="widget-header mr-3">
-                            <a href="{{ route('login') }}" class="widget-view">
-                                <div class="icon-area">
-                                    <i class="fa fa-user"></i>
-
-                                </div>
-                                <small class="text"> تسجيل الدخول </small>
-                            </a>
-                        </div>
-                        <div class="widget-header mr-3">
-                            <a href="{{ route('register') }}" class="widget-view">
-                                <div class="icon-area">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <small class="text"> عضو جديد ؟ </small>
-                            </a>
-                        </div>
-                        @endif
-
-                        @if (Auth::check())
-                        <div class="widget-header mr-3">
-                            <a href="{{ route('site.account') }}" class="widget-view">
-                                <div class="icon-area">
-                                    <i class="fa fa-user"></i>
-                                   
-                                </div>
-                                <small class="text"> @lang('site.account') </small>
-                            </a>
-                        </div>
-                        @endif --}}
-
-                        <div class="widget-header">
-                            <a href="{{ route('cart') }}" class="widget-view">
-                                <div class="icon-area">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </div>
-                                <small class="text"> @lang('site.cart') </small>
-                            </a>
-                        </div>
-
-{{-- 
-                        @if (Auth::check())
-                        <div class="widget-header">
-                            <a href="{{ route('user.logout') }}" class="widget-view">
-                                <div class="icon-area">
-                                 <i class="fa fa-sign-out-alt"></i>
-                             </div>
-                             <small class="text"> @lang('site.logout') </small>
-                         </a>
-                     </div>
-                     @endif  --}}
-
-                 </div> <!-- widgets-wrap.// -->
-             </div> <!-- col.// -->
-         </div> <!-- row.// -->
-     </div> <!-- container.// -->
- </section> <!-- header-main .// -->
+                        @livewire('site.header-cart')
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section> 
 
 
 
@@ -153,3 +75,32 @@
 </nav>
 
 </header> <!-- section-header.// -->
+
+
+<style>
+    .cart-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-count {
+  position: absolute;
+  top: -2px;
+  left: 0px; 
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+</style>

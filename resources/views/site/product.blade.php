@@ -10,12 +10,8 @@
     </ol>
   </div>
 </section>
-
-<!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content bg-white padding-y">
   <div class="container">
-
-    <!-- ============================ ITEM DETAIL ======================== -->
     <div class="row">
       <aside class="col-md-6">
         <div class="card">
@@ -60,7 +56,7 @@
       </p>
 
 
-    </div> <!-- col.// -->
+    </div>
 
     <aside class="col-md-4">
 
@@ -86,7 +82,7 @@
                   </li>
                 </ul>
                 <span class="label-rating text-warning">5.0</span>
-              </div> <!-- rating-wrap.// -->
+              </div> 
             </figcaption>
           </figure>
         </div>
@@ -94,14 +90,12 @@
         @endforeach 
 
 
-      </div> <!-- box.// -->
-    </aside> <!-- col.// -->
-  </div> <!-- row.// -->
+      </div>
+    </aside>
+  </div> 
 
-</div> <!-- container .//  -->
+</div> 
 </section>
-<!-- ========================= SECTION CONTENT END// ========================= -->
-
 
 <div class="container">
   <section class="padding-bottom">
@@ -117,8 +111,7 @@
         <x-product-card :product="$best_selling_product" />
       </div>
       @endforeach
-
-    </div> <!-- row.// -->
+    </div> 
   </section>
 </div>
 

@@ -121,6 +121,8 @@ class ProductSelector extends Component
             ));
         }
         $this->alert( 'success' ,  'تم إضافه المنتج '.$this->finalVariant?->product->name.' الى السله بنجاح' );
+
+        $this->emit('cartChanged');
     }
 
     public function finalVariantChoosed($variateId)
